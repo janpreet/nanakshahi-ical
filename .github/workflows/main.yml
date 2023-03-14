@@ -54,9 +54,9 @@ jobs:
       - name: Add & Commit
         if: success()
         run: |
-          git config --local user.email "janpreetsinghgill@gmail.com"
-          git config --local user.name "Janpreet Singh via GitHub Action"
-          git add ./nanakshahi.ics
+          git config --local user.email "github-actions@github.com"
+          git config --local user.name "github-actions"
+          git add --force ./nanakshahi.ics
           git commit -m "👳‍♂️ nanakshahi-ical-building bot is helping"
       - name: Push to main
         env:
