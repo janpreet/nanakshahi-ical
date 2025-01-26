@@ -27,9 +27,9 @@ const calEvents = []
 const currentYear = new Date().getFullYear()
 const yearStart = new Date(currentYear, 0, 1)
 const yearEnd = new Date(currentYear + 1, 11, 31)
-const day = new Date(yearStart)
+const endTime = yearEnd.getTime()
 
-while (day <= yearEnd) {
+for (let day = new Date(yearStart); day.getTime() <= endTime; day.setDate(day.getDate() + 1)) {
   const currentDay = new Date(day)
   const gurpurab = n.getGurpurabsForDay(currentDay)
   const nDate = formatNanakshahiDate(currentDay)
@@ -52,8 +52,6 @@ while (day <= yearEnd) {
       categories: ['daily']
     })
   }
-  
-  day.setDate(day.getDate() + 1)
 }
 
 const { error, value } = ics.createEvents(calEvents)
