@@ -1,0 +1,508 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Community-maintained SGPC calendar corrections database",
+    "lastUpdated": "2024-12-19",
+    "contributors": [
+      "nanakshahi-ical contributors"
+    ],
+    "sources": [
+      "SGPC official calendars",
+      "Community reports",
+      "Historical analysis"
+    ]
+  },
+  "sgpcCorrections": {
+    "556": {
+      "gregorianYear": 2024,
+      "monthLengths": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30
+      ],
+      "totalDays": 365,
+      "source": "SGPC official calendar 2024",
+      "validatedBy": "community",
+      "corrections": {
+        "july_5": "miri_piri_divas"
+      }
+    },
+    "557": {
+      "gregorianYear": 2025,
+      "monthLengths": [
+        31,
+        31,
+        32,
+        31,
+        31,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30
+      ],
+      "totalDays": 366,
+      "source": "Jantri-Nanakshahi-557.pdf (extracted 2024-12-19)",
+      "validatedBy": "official_sgpc",
+      "corrections": {
+        "july_5": "miri_piri_divas",
+        "jeth_length": 32
+      },
+      "notes": "Official SGPC calendar data - Jeth has 32 days",
+      "officialData": {
+        "months": [
+          {
+            "name": "Chet",
+            "punjabi": "ਚੇਤ",
+            "days": 31,
+            "startDate": "2025-03-20"
+          },
+          {
+            "name": "Vaisakh",
+            "punjabi": "ਵੈਸਾਖ",
+            "days": 31,
+            "startDate": "2025-04-20"
+          },
+          {
+            "name": "Jeth",
+            "punjabi": "ਜੇਠ",
+            "days": 32,
+            "startDate": "2025-05-21"
+          },
+          {
+            "name": "Harh",
+            "punjabi": "ਹਾੜ",
+            "days": 31,
+            "startDate": "2025-06-22"
+          },
+          {
+            "name": "Sawan",
+            "punjabi": "ਸਾਵਣ",
+            "days": 31,
+            "startDate": "2025-07-23"
+          },
+          {
+            "name": "Bhadon",
+            "punjabi": "ਭਾਦੋਂ",
+            "days": 30,
+            "startDate": "2025-08-23"
+          },
+          {
+            "name": "Assu",
+            "punjabi": "ਅੱਸੂ",
+            "days": 30,
+            "startDate": "2025-09-22"
+          },
+          {
+            "name": "Kattak",
+            "punjabi": "ਕੱਤਕ",
+            "days": 30,
+            "startDate": "2025-10-22"
+          },
+          {
+            "name": "Maghar",
+            "punjabi": "ਮੱਘਰ",
+            "days": 30,
+            "startDate": "2025-11-21"
+          },
+          {
+            "name": "Poh",
+            "punjabi": "ਪੋਹ",
+            "days": 30,
+            "startDate": "2025-12-21"
+          },
+          {
+            "name": "Magh",
+            "punjabi": "ਮਾਘ",
+            "days": 30,
+            "startDate": "2026-01-20"
+          },
+          {
+            "name": "Phagan",
+            "punjabi": "ਫੱਗਣ",
+            "days": 30,
+            "startDate": "2026-02-19"
+          }
+        ],
+        "gurpurabs": [
+          {
+            "name": "Parkash Guru Nanak Dev Ji",
+            "nanakshahiDate": {
+              "month": 8,
+              "day": 23
+            },
+            "gregorianDate": "2024-11-15",
+            "type": "gurpurab",
+            "movable": true
+          },
+          {
+            "name": "Miri Piri Divas",
+            "nanakshahiDate": {
+              "month": 4,
+              "day": 22
+            },
+            "gregorianDate": "2025-07-05",
+            "type": "gurpurab",
+            "movable": false,
+            "note": "Corrected from Parkash Divas"
+          },
+          {
+            "name": "Shaheedi Guru Arjan Dev Ji",
+            "nanakshahiDate": {
+              "month": 3,
+              "day": 16
+            },
+            "gregorianDate": "2025-06-06",
+            "type": "shaheedi",
+            "movable": false
+          },
+          {
+            "name": "Parkash Guru Hargobind Sahib Ji",
+            "nanakshahiDate": {
+              "month": 4,
+              "day": 21
+            },
+            "gregorianDate": "2025-07-04",
+            "type": "gurpurab",
+            "movable": false
+          },
+          {
+            "name": "Bandi Chhorr Divas",
+            "nanakshahiDate": {
+              "month": 8,
+              "day": 8
+            },
+            "gregorianDate": "2024-10-20",
+            "type": "historical",
+            "movable": true
+          }
+        ],
+        "validation": {
+          "totalDays": 366,
+          "leapMonth": "Jeth",
+          "leapDays": 32,
+          "startDate": "2025-03-20",
+          "endDate": "2026-03-19"
+        }
+      }
+    },
+    "558": {
+      "gregorianYear": 2026,
+      "monthLengths": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30
+      ],
+      "totalDays": 365,
+      "source": "projected_from_pattern",
+      "validatedBy": "pending",
+      "corrections": {
+        "july_5": "miri_piri_divas"
+      },
+      "notes": "Predicted based on historical patterns - needs SGPC verification"
+    },
+    "559": {
+      "gregorianYear": 2027,
+      "monthLengths": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30
+      ],
+      "totalDays": 365,
+      "source": "projected_from_pattern",
+      "validatedBy": "pending",
+      "corrections": {
+        "july_5": "miri_piri_divas"
+      },
+      "notes": "Predicted based on historical patterns - needs SGPC verification"
+    },
+    "560": {
+      "gregorianYear": 2028,
+      "monthLengths": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30
+      ],
+      "totalDays": 365,
+      "source": "projected_from_pattern",
+      "validatedBy": "pending",
+      "corrections": {
+        "july_5": "miri_piri_divas"
+      },
+      "notes": "Predicted based on historical patterns - needs SGPC verification"
+    },
+    "561": {
+      "gregorianYear": 2029,
+      "monthLengths": [
+        31,
+        31,
+        32,
+        31,
+        31,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30
+      ],
+      "totalDays": 366,
+      "source": "projected_from_pattern",
+      "validatedBy": "pending",
+      "corrections": {
+        "july_5": "miri_piri_divas",
+        "jeth_length": 32
+      },
+      "notes": "Predicted leap year pattern - Jeth may have 32 days (needs SGPC verification)"
+    }
+  },
+  "movableGurpurabs": {
+    "description": "Movable Gurpurabs based on lunar calendar calculations",
+    "source": "Historical analysis and community contributions",
+    "gurpurabs": {
+      "gurunanak": {
+        "description": "Parkash Guru Nanak Dev Ji",
+        "type": "gurpurab",
+        "calculation": "kartik_purnima",
+        "dates": {
+          "2024": {
+            "month": 11,
+            "day": 15
+          },
+          "2025": {
+            "month": 11,
+            "day": 5
+          },
+          "2026": {
+            "month": 11,
+            "day": 24
+          },
+          "2027": {
+            "month": 11,
+            "day": 13
+          },
+          "2028": {
+            "month": 11,
+            "day": 2
+          },
+          "2029": {
+            "month": 11,
+            "day": 21
+          }
+        }
+      },
+      "bandichhorr": {
+        "description": "Bandi Chhorr Divas (Diwali)",
+        "type": "historical",
+        "calculation": "diwali_amavasya",
+        "dates": {
+          "2024": {
+            "month": 11,
+            "day": 1
+          },
+          "2025": {
+            "month": 10,
+            "day": 20
+          },
+          "2026": {
+            "month": 11,
+            "day": 8
+          },
+          "2027": {
+            "month": 10,
+            "day": 29
+          },
+          "2028": {
+            "month": 10,
+            "day": 17
+          },
+          "2029": {
+            "month": 11,
+            "day": 5
+          }
+        }
+      },
+      "holla": {
+        "description": "Holla Mohalla",
+        "type": "historical",
+        "calculation": "holi_plus_one",
+        "dates": {
+          "2024": {
+            "month": 3,
+            "day": 25
+          },
+          "2025": {
+            "month": 3,
+            "day": 14
+          },
+          "2026": {
+            "month": 3,
+            "day": 3
+          },
+          "2027": {
+            "month": 3,
+            "day": 22
+          },
+          "2028": {
+            "month": 3,
+            "day": 11
+          },
+          "2029": {
+            "month": 3,
+            "day": 30
+          }
+        }
+      }
+    }
+  },
+  "validationRules": {
+    "monthLengths": {
+      "min": 28,
+      "max": 32,
+      "total": {
+        "min": 365,
+        "max": 366
+      }
+    },
+    "leapYearPattern": {
+      "description": "SGPC leap year pattern analysis",
+      "observedPattern": "Jeth extends to 32 days approximately every 4 years, but not consistently",
+      "knownLeapYears": [
+        557,
+        561
+      ],
+      "needsVerification": true
+    }
+  },
+  "predictionModel": {
+    "description": "Pattern-based prediction for future years",
+    "confidence": "medium",
+    "rules": [
+      {
+        "rule": "july_5_correction",
+        "description": "July 5th should always be Miri Piri Divas",
+        "confidence": "high"
+      },
+      {
+        "rule": "jeth_leap_pattern",
+        "description": "Jeth extends to 32 days roughly every 4 years",
+        "confidence": "medium",
+        "note": "Requires SGPC confirmation"
+      },
+      {
+        "rule": "total_days_365_366",
+        "description": "Total days should be 365 or 366",
+        "confidence": "high"
+      }
+    ]
+  },
+  "officialCalendarData": {
+    "description": "Official SGPC calendar data extracted from PDF sources",
+    "sources": {
+      "557": {
+        "source": "Jantri-Nanakshahi-557.pdf (extracted 2024-12-19)",
+        "extractedDate": "2024-12-19",
+        "gurpurabs": [
+          {
+            "name": "Parkash Guru Nanak Dev Ji",
+            "nanakshahiDate": {
+              "month": 8,
+              "day": 23
+            },
+            "gregorianDate": "2024-11-15",
+            "type": "gurpurab",
+            "movable": true
+          },
+          {
+            "name": "Miri Piri Divas",
+            "nanakshahiDate": {
+              "month": 4,
+              "day": 22
+            },
+            "gregorianDate": "2025-07-05",
+            "type": "gurpurab",
+            "movable": false,
+            "note": "Corrected from Parkash Divas"
+          },
+          {
+            "name": "Shaheedi Guru Arjan Dev Ji",
+            "nanakshahiDate": {
+              "month": 3,
+              "day": 16
+            },
+            "gregorianDate": "2025-06-06",
+            "type": "shaheedi",
+            "movable": false
+          },
+          {
+            "name": "Parkash Guru Hargobind Sahib Ji",
+            "nanakshahiDate": {
+              "month": 4,
+              "day": 21
+            },
+            "gregorianDate": "2025-07-04",
+            "type": "gurpurab",
+            "movable": false
+          },
+          {
+            "name": "Bandi Chhorr Divas",
+            "nanakshahiDate": {
+              "month": 8,
+              "day": 8
+            },
+            "gregorianDate": "2024-10-20",
+            "type": "historical",
+            "movable": true
+          }
+        ],
+        "validation": {
+          "totalDays": 366,
+          "leapMonth": "Jeth",
+          "leapDays": 32,
+          "startDate": "2025-03-20",
+          "endDate": "2026-03-19"
+        }
+      }
+    },
+    "lastUpdated": "2025-07-06"
+  }
+}

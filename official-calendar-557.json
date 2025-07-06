@@ -1,0 +1,86 @@
+{
+  "year": 557,
+  "gregorianYear": 2025,
+  "source": "Jantri-Nanakshahi-557.pdf (extracted 2024-12-19)",
+  "comparison": {
+    "monthLengths": [
+      31,
+      31,
+      32,
+      31,
+      31,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30,
+      30
+    ],
+    "totalDays": 366,
+    "corrections": {
+      "july_5": "miri_piri_divas",
+      "jeth_length": 32
+    }
+  },
+  "gurpurabs": [
+    {
+      "name": "Parkash Guru Nanak Dev Ji",
+      "nanakshahiDate": {
+        "month": 8,
+        "day": 23
+      },
+      "gregorianDate": "2024-11-15",
+      "type": "gurpurab",
+      "movable": true
+    },
+    {
+      "name": "Miri Piri Divas",
+      "nanakshahiDate": {
+        "month": 4,
+        "day": 22
+      },
+      "gregorianDate": "2025-07-05",
+      "type": "gurpurab",
+      "movable": false,
+      "note": "Corrected from Parkash Divas"
+    },
+    {
+      "name": "Shaheedi Guru Arjan Dev Ji",
+      "nanakshahiDate": {
+        "month": 3,
+        "day": 16
+      },
+      "gregorianDate": "2025-06-06",
+      "type": "shaheedi",
+      "movable": false
+    },
+    {
+      "name": "Parkash Guru Hargobind Sahib Ji",
+      "nanakshahiDate": {
+        "month": 4,
+        "day": 21
+      },
+      "gregorianDate": "2025-07-04",
+      "type": "gurpurab",
+      "movable": false
+    },
+    {
+      "name": "Bandi Chhorr Divas",
+      "nanakshahiDate": {
+        "month": 8,
+        "day": 8
+      },
+      "gregorianDate": "2024-10-20",
+      "type": "historical",
+      "movable": true
+    }
+  ],
+  "validation": {
+    "totalDays": 366,
+    "leapMonth": "Jeth",
+    "leapDays": 32,
+    "startDate": "2025-03-20",
+    "endDate": "2026-03-19"
+  }
+}

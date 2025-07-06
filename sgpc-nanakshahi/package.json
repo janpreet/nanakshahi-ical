@@ -1,0 +1,27 @@
+{
+  "name": "sgpc-nanakshahi",
+  "version": "1.0.0",
+  "description": "SGPC-compliant Nanakshahi calendar implementation with accurate dates and Gurpurab events",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "author": "Janpreet Singh <singh@janpreet.com>",
+  "license": "MIT",
+  "keywords": [
+    "nanakshahi",
+    "sgpc",
+    "sikhi",
+    "sikh",
+    "gurpurab",
+    "gurpurabs",
+    "gurmukhi",
+    "calendar"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "eslint": "^8.36.0"
+  }
+} 

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Nanakshahi Calendar 557 NS (2025 CE)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .info-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .info-card .highlight {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .calendar-section {
+            padding: 30px;
+        }
+
+        .calendar-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Continuous Calendar Styles */
+        .continuous-calendar {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .calendar-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .calendar-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-nav:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .calendar-nav.prev {
+            left: 20px;
+        }
+
+        .calendar-nav.next {
+            right: 20px;
+        }
+
+        .calendar-month-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .calendar-month-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background: #f8f9fa;
+        }
+
+        .calendar-weekday {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+
+        .calendar-dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #eee;
+        }
+
+        .calendar-date {
+            background: white;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            min-height: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .calendar-date:hover {
+            background: #f0f8ff;
+        }
+
+        .calendar-date.other-month {
+            color: #ccc;
+            background: #f8f9fa;
+        }
+
+        .calendar-date.today {
+            background: #007bff;
+            color: white;
+        }
+
+        .calendar-date.has-event {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+
+        .calendar-date.has-event:hover {
+            background: #fff1ba;
+        }
+
+        .calendar-date-number {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 3px;
+            color: #333;
+        }
+
+        .calendar-date.other-month .calendar-date-number {
+            color: #ccc;
+        }
+
+        .calendar-date.today .calendar-date-number {
+            color: white;
+        }
+
+        .calendar-date-events {
+            font-size: 0.65rem;
+            color: #666;
+            text-align: center;
+            line-height: 1.1;
+            margin-top: auto;
+        }
+
+        .calendar-date.has-event .calendar-date-events {
+            color: #856404;
+            font-weight: bold;
+        }
+
+        .calendar-date.today .calendar-date-events {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .month-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .month-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .month-info {
+            padding: 15px;
+        }
+
+        .month-info p {
+            margin: 5px 0;
+        }
+
+        .gurpurabs-section {
+            background: #f8f9fa;
+            padding: 30px;
+        }
+
+        .gurpurabs-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .gurpurab-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 15px;
+        }
+
+        .gurpurab-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b6b;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .gurpurab-date {
+            font-weight: bold;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .gurpurab-name {
+            font-size: 1.1rem;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .gurpurab-punjabi {
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer a {
+            color: #4facfe;
+            text-decoration: none;
+        }
+
+        .sgpc-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .calendar-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🗓️ Nanakshahi Calendar</h1>
+            <p>557 NS (2025 CE) • Community-Enhanced</p>
+            <div class="sgpc-badge">🔄 Auto-Updated</div>
+            <div style="margin-top: 15px;">
+                <a href="comparison.html" style="display: inline-block; padding: 8px 16px; background: #3498db; color: white; text-decoration: none; border-radius: 20px; margin-right: 10px; font-size: 0.9rem;">📊 Official Comparison</a>
+                <a href="https://github.com/janpreet/nanakshahi-ical" target="_blank" style="display: inline-block; padding: 8px 16px; background: #2c3e50; color: white; text-decoration: none; border-radius: 20px; font-size: 0.9rem;">📚 Source Code</a>
+            </div>
+        </header>
+
+        <section class="info-cards">
+            <div class="info-card">
+                <h3>📊 Year Overview</h3>
+                <div class="highlight">366 Days</div>
+                <p>Leap Year (Jeth has 32 days)</p>
+            </div>
+            <div class="info-card">
+                <h3>🎯 SGPC Corrections</h3>
+                <div class="highlight">July 5th</div>
+                <p>Miri Piri Divas (22 Harh 557)</p>
+            </div>
+            <div class="info-card">
+                <h3>📈 Calendar Accuracy</h3>
+                <div class="highlight">Enhanced</div>
+                <p>Community-corrected calendar data</p>
+            </div>
+            <div class="info-card">
+                <h3>🔄 API Compatibility</h3>
+                <div class="highlight">nanakshahi-js</div>
+                <p>Drop-in replacement ready</p>
+            </div>
+        </section>
+
+        <section class="calendar-section">
+            <h2>📅 Calendar View</h2>
+            
+            <!-- Continuous Calendar -->
+            <div class="continuous-calendar" id="continuous-calendar">
+                <div class="calendar-header">
+                    <button class="calendar-nav prev" id="prev-month">‹</button>
+                    <div class="calendar-month-year" id="calendar-month-year"></div>
+                    <div class="calendar-month-subtitle" id="calendar-month-subtitle"></div>
+                    <button class="calendar-nav next" id="next-month">›</button>
+                </div>
+                
+                <div class="calendar-weekdays">
+                    <div class="calendar-weekday">Sun</div>
+                    <div class="calendar-weekday">Mon</div>
+                    <div class="calendar-weekday">Tue</div>
+                    <div class="calendar-weekday">Wed</div>
+                    <div class="calendar-weekday">Thu</div>
+                    <div class="calendar-weekday">Fri</div>
+                    <div class="calendar-weekday">Sat</div>
+                </div>
+                
+                <div class="calendar-dates" id="calendar-dates">
+                    <!-- Calendar dates will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Monthly Overview -->
+            <h3 style="text-align: center; margin-bottom: 20px; color: #666;">Monthly Overview</h3>
+            <div class="calendar-grid" id="calendar-grid">
+                <!-- Calendar will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <section class="gurpurabs-section">
+            <h2>🙏 Gurpurabs & Religious Observances</h2>
+            <div class="gurpurab-list" id="gurpurab-list">
+                <!-- Gurpurabs will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>
+                📚 <strong>Built with community-enhanced calendar data</strong><br>
+                🔗 <a href="https://github.com/janpreet/nanakshahi-ical">View on GitHub</a> | 
+                📖 <a href="https://www.npmjs.com/package/sgpc-nanakshahi">npm Package</a><br>
+                🙏 <em>Inspired by <a href="https://github.com/Sarabveer/nanakshahi-js">nanakshahi-js</a> by Sarabveer Singh</em>
+            </p>
+        </footer>
+    </div>
+
+    <script src="web-calendar.js"></script>
+</body>
+</html> 

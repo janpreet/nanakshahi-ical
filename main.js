@@ -1,4 +1,4 @@
-const n = require('nanakshahi')
+const n = require('./sgpc-nanakshahi')
 const ics = require('ics')
 const { writeFileSync } = require('fs')
 const path = require('path')
@@ -10,7 +10,7 @@ const newDateFormat = (a) => {
 const formatNanakshahiDate = (gregorianDate) => {
   const nDate = n.getNanakshahiDate(gregorianDate)
   if (!nDate || !nDate.englishDate || !nDate.punjabiDate) return null
-  
+
   return {
     en: `${nDate.englishDate.date} ${nDate.englishDate.monthName}`,
     pa: `${nDate.punjabiDate.date} ${nDate.punjabiDate.monthName}`,
@@ -33,7 +33,7 @@ for (let day = new Date(yearStart); day.getTime() <= endTime; day.setDate(day.ge
   const currentDay = new Date(day)
   const gurpurab = n.getGurpurabsForDay(currentDay)
   const nDate = formatNanakshahiDate(currentDay)
-  
+
   for (const g in gurpurab) {
     calEvents.push({
       start: newDateFormat(currentDay),
@@ -42,7 +42,7 @@ for (let day = new Date(yearStart); day.getTime() <= endTime; day.setDate(day.ge
       categories: [gurpurab[g].type]
     })
   }
-  
+
   if (nDate) {
     calEvents.push({
       start: newDateFormat(currentDay),

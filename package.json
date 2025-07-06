@@ -1,12 +1,23 @@
 {
   "name": "nanakshahi-ical",
   "version": "1.0.0",
-  "description": "Generating iCal file for Nanakshahi dates and Gurpurabs.",
+  "description": "Nanakshahi calendar iCal generator using official SGPC Jantri data with enhanced accuracy for Sikh religious observances.",
   "main": "main.js",
   "scripts": {
     "test": "jest --coverage",
     "start": "node main.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "fetch-calendar": "node scripts/fetch-sgpc-data-v2.js",
+    "extract-official": "node scripts/extract-official-calendar.js",
+    "validate-calendar": "node scripts/validate-calendar.js",
+    "predict-calendar": "node scripts/predict-calendar.js",
+    "update-calendar": "npm run fetch-calendar && npm run validate-calendar",
+    "compare-official": "npm run extract-official && echo 'Official calendar data extracted and compared!'",
+    "check-calendar-status": "node -e \"const sgpc = require('./sgpc-nanakshahi'); const year = new Date().getFullYear() - 1468; console.log(JSON.stringify(sgpc.checkCalendarDataStatus(year), null, 2))\"",
+    "test-sgpc": "jest tests/sgpc-compliance.test.js",
+    "validate-movable-gurpurabs": "node -e \"const sgpc = require('./sgpc-nanakshahi'); console.log(JSON.stringify(sgpc.validateMovableGurpurabs(), null, 2))\"",
+    "build:web": "node scripts/build-web.js",
+    "prepublishOnly": "npm run validate-calendar && npm test"
   },
   "engines": {
     "node": "19.7.0",
@@ -18,7 +29,7 @@
     "eslint-plugin-jest": "^27.2.1",
     "ics": "^3.1.0",
     "jest": "^29.5.0",
-    "nanakshahi": "^8.1.1"
+    "nanakshahi": "^8.2.2"
   },
   "repository": {
     "type": "git",
@@ -27,6 +38,7 @@
   "bugs": {
     "url": "https://github.com/janpreet/nanakshahi-ical/issues"
   },
+  "homepage": "https://janpreet.github.io/nanakshahi-ical/",
   "devDependencies": {
     "eslint": "^8.36.0",
     "eslint-config-standard": "^17.0.0",
@@ -41,6 +53,11 @@
     "sikh",
     "gurpurab",
     "gurpurabs",
-    "gurmukhi"
+    "gurmukhi",
+    "sgpc",
+    "jantri",
+    "calendar",
+    "ical",
+    "community"
   ]
 }

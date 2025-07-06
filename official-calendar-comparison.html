@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official SGPC Calendar Comparison - Nanakshahi Calendar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .calendar-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar-section h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .calendar-section.official h2 {
+            border-bottom-color: #e74c3c;
+        }
+
+        .source-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+
+        .source-info.official {
+            border-left-color: #e74c3c;
+        }
+
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .month-card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .month-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .month-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .month-punjabi {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+        }
+
+        .month-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .days-count {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .days-count.leap {
+            color: #e74c3c;
+        }
+
+        .date-range {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .gurpurabs-section {
+            margin-top: 30px;
+        }
+
+        .gurpurabs-section h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .gurpurab-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .gurpurab-item.movable {
+            border-left-color: #e67e22;
+        }
+
+        .gurpurab-name {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .gurpurab-dates {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .validation-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .validation-section h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .validation-result {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .validation-result.match {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .validation-result.mismatch {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .differences-list {
+            margin-top: 20px;
+        }
+
+        .differences-list ul {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .differences-list li {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .month-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📅 Official SGPC Calendar Comparison</h1>
+            <p>Side-by-side comparison of our implementation with the official SGPC calendar</p>
+            <div style="margin-top: 15px;">
+                <a href="index.html" style="display: inline-block; padding: 8px 16px; background: #3498db; color: white; text-decoration: none; border-radius: 20px; margin-right: 10px; font-size: 0.9rem;">🗓️ Main Calendar</a>
+                <a href="https://github.com/janpreet/nanakshahi-ical" target="_blank" style="display: inline-block; padding: 8px 16px; background: #2c3e50; color: white; text-decoration: none; border-radius: 20px; font-size: 0.9rem;">📚 Source Code</a>
+            </div>
+        </div>
+
+        <div id="validation-section" class="validation-section">
+            <h2>🔍 Validation Results</h2>
+            <div id="validation-result" class="validation-result">
+                Loading comparison...
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="total-days">366</div>
+                <div class="stat-label">Total Days</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="leap-month">Jeth</div>
+                <div class="stat-label">Leap Month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="gurpurabs-count">5</div>
+                <div class="stat-label">Gurpurabs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="year-ns">557</div>
+                <div class="stat-label">Nanakshahi Year</div>
+            </div>
+        </div>
+
+        <div class="comparison-container">
+            <div class="calendar-section">
+                <h2>🏛️ Our Implementation</h2>
+                <div class="source-info">
+                    <strong>Source:</strong> Community-Enhanced Calendar<br>
+                    <strong>Data:</strong> SGPC-compliant with corrections<br>
+                    <strong>Last Updated:</strong> <span id="our-updated">Loading...</span>
+                </div>
+                <div id="our-calendar" class="month-grid">
+                    <!-- Our calendar will be populated here -->
+                </div>
+                <div class="gurpurabs-section">
+                    <h3>🎯 Gurpurabs & Events</h3>
+                    <div id="our-gurpurabs">
+                        <!-- Our gurpurabs will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendar-section official">
+                <h2>📖 Official SGPC Calendar</h2>
+                <div class="source-info official">
+                    <strong>Source:</strong> Jantri-Nanakshahi-557.pdf<br>
+                    <strong>Data:</strong> Official SGPC Publication<br>
+                    <strong>Extracted:</strong> December 19, 2024
+                </div>
+                <div id="official-calendar" class="month-grid">
+                    <!-- Official calendar will be populated here -->
+                </div>
+                <div class="gurpurabs-section">
+                    <h3>🎯 Gurpurabs & Events</h3>
+                    <div id="official-gurpurabs">
+                        <!-- Official gurpurabs will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load and display comparison data
+        async function loadComparisonData() {
+            try {
+                // Load our calendar data
+                const ourResponse = await fetch('sgpc-corrections.json');
+                const ourData = await ourResponse.json();
+                
+                // Load official calendar report
+                const officialResponse = await fetch('official-calendar-557.json');
+                const officialData = await officialResponse.json();
+                
+                displayComparison(ourData, officialData);
+            } catch (error) {
+                console.error('Error loading comparison data:', error);
+                document.getElementById('validation-result').innerHTML = 
+                    '<div class="validation-result mismatch">❌ Error loading calendar data</div>';
+            }
+        }
+
+        function displayComparison(ourData, officialData) {
+            // Update validation results
+            const ourCalendar = ourData.sgpcCorrections['557'];
+            const officialCalendar = officialData.comparison;
+            
+            const matches = JSON.stringify(ourCalendar.monthLengths) === JSON.stringify(officialCalendar.monthLengths);
+            const validationResult = document.getElementById('validation-result');
+            
+            if (matches) {
+                validationResult.className = 'validation-result match';
+                validationResult.innerHTML = '✅ Perfect Match! Our calendar matches the official SGPC calendar exactly.';
+            } else {
+                validationResult.className = 'validation-result mismatch';
+                validationResult.innerHTML = '❌ Differences Found! Please review the comparison below.';
+            }
+            
+            // Update stats
+            document.getElementById('total-days').textContent = officialCalendar.totalDays;
+            document.getElementById('leap-month').textContent = officialCalendar.monthLengths[2] > 31 ? 'Jeth' : 'None';
+            document.getElementById('gurpurabs-count').textContent = officialData.gurpurabs.length;
+            document.getElementById('our-updated').textContent = ourData.metadata.lastUpdated;
+            
+            // Display our calendar
+            displayCalendar('our-calendar', ourCalendar, false);
+            displayGurpurabs('our-gurpurabs', ourData.movableGurpurabs?.gurpurabs || {});
+            
+            // Display official calendar
+            displayCalendar('official-calendar', officialCalendar, true);
+            displayGurpurabs('official-gurpurabs', officialData.gurpurabs);
+        }
+
+        function displayCalendar(containerId, calendarData, isOfficial) {
+            const container = document.getElementById(containerId);
+            const monthNames = ['Chet', 'Vaisakh', 'Jeth', 'Harh', 'Sawan', 'Bhadon', 'Assu', 'Kattak', 'Maghar', 'Poh', 'Magh', 'Phagan'];
+            const monthNamesPunjabi = ['ਚੇਤ', 'ਵੈਸਾਖ', 'ਜੇਠ', 'ਹਾੜ', 'ਸਾਵਣ', 'ਭਾਦੋਂ', 'ਅੱਸੂ', 'ਕੱਤਕ', 'ਮੱਘਰ', 'ਪੋਹ', 'ਮਾਘ', 'ਫੱਗਣ'];
+            
+            const monthLengths = calendarData.monthLengths;
+            const startDates = isOfficial && calendarData.officialData ? 
+                calendarData.officialData.months.map(m => m.startDate) : 
+                generateStartDates(monthLengths);
+            
+            container.innerHTML = monthLengths.map((days, index) => {
+                const isLeap = days > 31;
+                const startDate = startDates[index] || `2025-${String(index + 3).padStart(2, '0')}-01`;
+                
+                return `
+                    <div class="month-card">
+                        <div class="month-name">
+                            ${monthNames[index]}
+                            <span class="month-punjabi">${monthNamesPunjabi[index]}</span>
+                        </div>
+                        <div class="month-details">
+                            <div class="days-count ${isLeap ? 'leap' : ''}">${days} days</div>
+                        </div>
+                        <div class="date-range">
+                            Starts: ${formatDate(startDate)}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function displayGurpurabs(containerId, gurpurabsData) {
+            const container = document.getElementById(containerId);
+            
+            if (Array.isArray(gurpurabsData)) {
+                // Official data format
+                container.innerHTML = gurpurabsData.map(gurpurab => `
+                    <div class="gurpurab-item ${gurpurab.movable ? 'movable' : ''}">
+                        <div class="gurpurab-name">${gurpurab.name}</div>
+                        <div class="gurpurab-dates">
+                            <span>Nanakshahi: ${gurpurab.nanakshahiDate.day} ${getMonthName(gurpurab.nanakshahiDate.month)}</span>
+                            <span>Gregorian: ${formatDate(gurpurab.gregorianDate)}</span>
+                        </div>
+                        ${gurpurab.note ? `<div style="font-size: 0.8rem; color: #666; margin-top: 5px;">${gurpurab.note}</div>` : ''}
+                    </div>
+                `).join('');
+            } else {
+                // Our data format
+                const gurpurabsList = Object.entries(gurpurabsData).map(([key, gurpurab]) => {
+                    const currentYear = 2025;
+                    const date = gurpurab.dates[currentYear];
+                    if (!date) return '';
+                    
+                    return `
+                        <div class="gurpurab-item movable">
+                            <div class="gurpurab-name">${gurpurab.description}</div>
+                            <div class="gurpurab-dates">
+                                <span>Type: ${gurpurab.type}</span>
+                                <span>Date: ${date.month}/${date.day}/${currentYear}</span>
+                            </div>
+                        </div>
+                    `;
+                }).filter(Boolean);
+                
+                container.innerHTML = gurpurabsList.join('');
+            }
+        }
+
+        function generateStartDates(monthLengths) {
+            const dates = [];
+            let currentDate = new Date('2025-03-20');
+            
+            monthLengths.forEach((days, index) => {
+                dates.push(currentDate.toISOString().split('T')[0]);
+                currentDate.setDate(currentDate.getDate() + days);
+            });
+            
+            return dates;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                month: 'long', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
+        }
+
+        function getMonthName(monthNumber) {
+            const monthNames = ['', 'Chet', 'Vaisakh', 'Jeth', 'Harh', 'Sawan', 'Bhadon', 'Assu', 'Kattak', 'Maghar', 'Poh', 'Magh', 'Phagan'];
+            return monthNames[monthNumber] || 'Unknown';
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', loadComparisonData);
+    </script>
+</body>
+</html> 

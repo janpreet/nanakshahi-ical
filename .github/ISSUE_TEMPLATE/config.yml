@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🔒 Security Vulnerability (Private)
+    url: https://github.com/janpreet/nanakshahi-ical/security/advisories/new
+    about: Report security vulnerabilities privately
+  - name: 💬 General Discussion
+    url: https://github.com/janpreet/nanakshahi-ical/discussions
+    about: Ask questions, share ideas, or discuss the calendar
+  - name: 📚 Documentation
+    url: https://github.com/janpreet/nanakshahi-ical/blob/main/README.md
+    about: Read the project documentation
+  - name: 🌐 Live Calendar
+    url: https://janpreet.github.io/nanakshahi-ical/
+    about: View the interactive web calendar
+  - name: 📧 Direct Contact
+    url: https://github.com/janpreet/nanakshahi-ical/issues/new/choose
+    about: Contact the maintainer directly or create a custom issue 
