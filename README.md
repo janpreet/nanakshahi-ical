@@ -93,7 +93,7 @@ I use [CodeCov](https://codecov.io) to track test coverage. Coverage reports are
 - All pull requests  
 - Calendar update workflows
 
-[![codecov](https://codecov.io/gh/janpreet/nanakshahi-ical/branch/main/graph/badge.svg)](https://codecov.io/gh/janpreet/nanakshahi-ical)
+[![codecov](https://codecov.io/gh/janpreet/nanakshahi-ical/graph/badge.svg?token=OMQ92VQEBI)](https://codecov.io/gh/janpreet/nanakshahi-ical)
 
 ### Available Scripts
 

@@ -95,6 +95,13 @@ if (fs.existsSync(path.join(__dirname, '../index.html'))) {
   fs.copyFileSync(path.join(__dirname, '../index.html'), path.join(distDir, 'index.html'))
 }
 
+// Copy comparison.html to dist
+if (fs.existsSync(path.join(__dirname, '../comparison.html'))) {
+  fs.copyFileSync(path.join(__dirname, '../comparison.html'), path.join(distDir, 'comparison.html'))
+} else if (fs.existsSync(path.join(__dirname, '../official-calendar-comparison.html'))) {
+  fs.copyFileSync(path.join(__dirname, '../official-calendar-comparison.html'), path.join(distDir, 'comparison.html'))
+}
+
 // Generate sitemap.xml for SEO
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -103,6 +110,12 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://janpreet.github.io/nanakshahi-ical/comparison.html</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>`
 
@@ -119,6 +132,7 @@ console.log('✅ Web calendar built successfully!')
 console.log(`📊 Generated data for ${calendarData.statistics.totalGurpurabs} Gurpurabs`)
 console.log('📁 Files created in dist/:')
 console.log('   - index.html (main calendar page)')
+console.log('   - comparison.html (official comparison page)')
 console.log('   - web-calendar.js (calendar data)')
 console.log('   - sitemap.xml (SEO optimization)')
 console.log('   - robots.txt (search engine instructions)')
