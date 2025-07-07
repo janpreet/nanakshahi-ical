@@ -1,6 +1,6 @@
 {
   "name": "nanakshahi-ical",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Nanakshahi calendar iCal generator using official SGPC Jantri data with enhanced accuracy for Sikh religious observances.",
   "main": "main.js",
   "scripts": {
