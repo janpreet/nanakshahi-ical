@@ -439,25 +439,7 @@ function findEventsOnDate (date) {
     }
   }
 
-  // Add fallback events for known dates
-  const fallbackEvents = [
-    { date: '2025-01-11', name: 'Parkash Divas Sri Guru Gobind Singh Ji', shortName: 'Parkash' },
-    { date: '2025-01-31', name: 'Maghi', shortName: 'Maghi' },
-    { date: '2025-03-20', name: 'Holla Mohalla', shortName: 'Holla' },
-    { date: '2025-03-28', name: 'Parkash Divas Sri Guru Nanak Dev Ji', shortName: 'Parkash' },
-    { date: '2025-07-05', name: 'Miri Piri Divas', shortName: 'Miri Piri' },
-    { date: '2025-10-25', name: 'Bandi Chhorr Divas', shortName: 'Bandi Chhorr' }
-  ]
-
-  for (const event of fallbackEvents) {
-    const eventDate = new Date(event.date)
-    if (eventDate.toDateString() === date.toDateString()) {
-      const existing = events.find(e => e.name === event.name)
-      if (!existing) {
-        events.push(event)
-      }
-    }
-  }
+  // Fallback events removed - using main gurpurab data only
 
   return events
 }

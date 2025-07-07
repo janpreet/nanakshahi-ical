@@ -1,11 +1,11 @@
 
 // Enhanced Nanakshahi Calendar Data
-// Generated: 2025-07-07T00:31:02.296Z
+// Generated: 2025-07-07T00:47:41.423Z
 // Project by Janpreet Singh (using SGPC Jantri data)
 
 const NANAKSHAHI_CALENDAR_DATA = {
   "metadata": {
-    "generated": "2025-07-07T00:31:02.294Z",
+    "generated": "2025-07-07T00:47:41.421Z",
     "nanakshahiYear": 557,
     "description": "Enhanced Nanakshahi Calendar"
   },
