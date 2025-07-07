@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://janpreet.github.io/nanakshahi-ical/sitemap.xml

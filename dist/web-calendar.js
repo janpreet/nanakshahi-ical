@@ -1,584 +1,519 @@
 
-// Auto-generated Enhanced Nanakshahi Calendar Data for 557 NS (2025 CE)
-const CALENDAR_DATA = {
-  "year": 557,
-  "ceYear": 2025,
-  "isLeapYear": true,
-  "totalDays": 366,
+// Enhanced Nanakshahi Calendar Data
+// Generated: 2025-07-07T00:31:02.296Z
+// Project by Janpreet Singh (using SGPC Jantri data)
+
+const NANAKSHAHI_CALENDAR_DATA = {
+  "metadata": {
+    "generated": "2025-07-07T00:31:02.294Z",
+    "nanakshahiYear": 557,
+    "description": "Enhanced Nanakshahi Calendar"
+  },
   "months": [
     {
+      "index": 1,
       "name": "Chet",
-      "punjabi": "ਚੇਤ",
+      "nameGurmukhi": "ਚੇਤ",
       "days": 31,
-      "startDate": "2025-03-19T04:00:00.000Z"
+      "startDate": "2025-03-19T04:00:00.000Z",
+      "endDate": "2025-04-19T04:00:00.000Z"
     },
     {
+      "index": 2,
       "name": "Vaisakh",
-      "punjabi": "ਵੈਸਾਖ",
+      "nameGurmukhi": "ਵੈਸਾਖ",
       "days": 31,
-      "startDate": "2025-04-19T04:00:00.000Z"
+      "startDate": "2025-04-19T04:00:00.000Z",
+      "endDate": "2025-05-20T04:00:00.000Z"
     },
     {
+      "index": 3,
       "name": "Jeth",
-      "punjabi": "ਜੇਠ",
+      "nameGurmukhi": "ਜੇਠ",
       "days": 32,
-      "startDate": "2025-05-20T04:00:00.000Z"
+      "startDate": "2025-05-20T04:00:00.000Z",
+      "endDate": "2025-06-21T04:00:00.000Z"
     },
     {
+      "index": 4,
       "name": "Harh",
-      "punjabi": "ਹਾੜ",
+      "nameGurmukhi": "ਹਾੜ",
       "days": 31,
-      "startDate": "2025-06-21T04:00:00.000Z"
+      "startDate": "2025-06-21T04:00:00.000Z",
+      "endDate": "2025-07-22T04:00:00.000Z"
     },
     {
+      "index": 5,
       "name": "Sawan",
-      "punjabi": "ਸਾਵਣ",
+      "nameGurmukhi": "ਸਾਵਣ",
       "days": 31,
-      "startDate": "2025-07-22T04:00:00.000Z"
+      "startDate": "2025-07-22T04:00:00.000Z",
+      "endDate": "2025-08-22T04:00:00.000Z"
     },
     {
+      "index": 6,
       "name": "Bhadon",
-      "punjabi": "ਭਾਦੋਂ",
+      "nameGurmukhi": "ਭਾਦੋਂ",
       "days": 30,
-      "startDate": "2025-08-22T04:00:00.000Z"
+      "startDate": "2025-08-22T04:00:00.000Z",
+      "endDate": "2025-09-21T04:00:00.000Z"
     },
     {
+      "index": 7,
       "name": "Assu",
-      "punjabi": "ਅੱਸੂ",
+      "nameGurmukhi": "ਅੱਸੂ",
       "days": 30,
-      "startDate": "2025-09-21T04:00:00.000Z"
+      "startDate": "2025-09-21T04:00:00.000Z",
+      "endDate": "2025-10-21T04:00:00.000Z"
     },
     {
+      "index": 8,
       "name": "Kartik",
-      "punjabi": "ਕੱਤਿਕ",
+      "nameGurmukhi": "ਕੱਤਿਕ",
       "days": 30,
-      "startDate": "2025-10-21T04:00:00.000Z"
+      "startDate": "2025-10-21T04:00:00.000Z",
+      "endDate": "2025-11-20T04:00:00.000Z"
     },
     {
+      "index": 9,
       "name": "Maghar",
-      "punjabi": "ਮੱਘਰ",
+      "nameGurmukhi": "ਮੱਘਰ",
       "days": 30,
-      "startDate": "2025-11-20T05:00:00.000Z"
+      "startDate": "2025-11-20T05:00:00.000Z",
+      "endDate": "2025-12-20T05:00:00.000Z"
     },
     {
+      "index": 10,
       "name": "Poh",
-      "punjabi": "ਪੋਹ",
+      "nameGurmukhi": "ਪੋਹ",
       "days": 30,
-      "startDate": "2025-12-20T05:00:00.000Z"
+      "startDate": "2025-12-20T05:00:00.000Z",
+      "endDate": "2026-01-19T05:00:00.000Z"
     },
     {
+      "index": 11,
       "name": "Magh",
-      "punjabi": "ਮਾਘ",
+      "nameGurmukhi": "ਮਾਘ",
       "days": 30,
-      "startDate": "2026-01-19T05:00:00.000Z"
+      "startDate": "2026-01-19T05:00:00.000Z",
+      "endDate": "2026-02-18T05:00:00.000Z"
     },
     {
+      "index": 12,
       "name": "Phagan",
-      "punjabi": "ਫੱਗਣ",
+      "nameGurmukhi": "ਫੱਗਣ",
       "days": 30,
-      "startDate": "2026-02-18T05:00:00.000Z"
+      "startDate": "2026-02-18T05:00:00.000Z",
+      "endDate": "2026-03-20T05:00:00.000Z"
     }
   ],
   "gurpurabs": [
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-03-24T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 5,
+        "month": "Chet",
+        "year": 557
+      },
+      "name": {
+        "en": "Parkash Divas Guru Tegh Bahadur Ji",
+        "pa": "ਪ੍ਰਕਾਸ਼ ਦਿਵਸ ਗੁਰੂ ਤੇਗ ਬਹਾਦੁਰ ਜੀ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-04-06T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 18,
+        "month": "Chet",
+        "year": 557
+      },
+      "name": {
+        "en": "Parkash Divas Guru Angad Dev Ji",
+        "pa": "ਪ੍ਰਕਾਸ਼ ਦਿਵਸ ਗੁਰੂ ਅੰਗਦ ਦੇਵ ਜੀ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-04-18T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 30,
+        "month": "Chet",
+        "year": 557
+      },
+      "name": {
+        "en": "Parkash Divas Guru Arjan Dev Ji",
+        "pa": "ਪ੍ਰਕਾਸ਼ ਦਿਵਸ ਗੁਰੂ ਅਰਜਨ ਦੇਵ ਜੀ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-04-19T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 31,
+        "month": "Chet",
+        "year": 557
+      },
+      "name": {
+        "en": "Parkash Divas Guru Har Rai Ji",
+        "pa": "ਪ੍ਰਕਾਸ਼ ਦਿਵਸ ਗੁਰੂ ਹਰ ਰਾਇ ਜੀ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-04-20T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 1,
+        "month": "Vaisakh",
+        "year": 557
+      },
+      "name": {
+        "en": "Nanakshahi New Year",
+        "pa": "ਨਾਨਕਸ਼ਾਹੀ ਨਵਾਂ ਸਾਲ"
+      },
       "type": "celebration",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-05-03T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 14,
+        "month": "Vaisakh",
+        "year": 557
+      },
+      "name": {
+        "en": "Vaisakhi - Khalsa Panth Foundation",
+        "pa": "ਵਿਸਾਖੀ - ਖਾਲਸਾ ਪੰਥ ਸਥਾਪਨਾ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-05-12T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 23,
+        "month": "Vaisakh",
+        "year": 557
+      },
+      "name": {
+        "en": "Parkash Divas Guru Amar Das Ji",
+        "pa": "ਪ੍ਰਕਾਸ਼ ਦਿਵਸ ਗੁਰੂ ਅਮਰ ਦਾਸ ਜੀ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-05-17T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 4,
+        "month": "Jeth",
+        "year": 557
+      },
+      "name": {
+        "en": "Shaheedi Divas Guru Arjan Dev Ji",
+        "pa": "ਸ਼ਹੀਦੀ ਦਿਵਸ ਗੁਰੂ ਅਰਜਨ ਦੇਵ ਜੀ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-06-16T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 2,
+        "month": "Harh",
+        "year": 557
+      },
+      "name": {
+        "en": "Parkash Divas Sri Akal Takht Sahib",
+        "pa": "ਸਿਰਹਾਣਾ ਦਿਵਸ ਸ੍ਰੀ ਅਕਾਲ ਤਖ਼ਤ ਸਾਹਿਬ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-06-25T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 11,
+        "month": "Harh",
+        "year": 557
+      },
+      "name": {
+        "en": "Shaheedi Divas Bhai Banda Singh Bahadur",
+        "pa": "ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ ਭਾਈ ਬੰਦਾ ਸਿੰਘ ਜੀ ਬਹਾਦਰ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-06-29T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 15,
+        "month": "Harh",
+        "year": 557
+      },
+      "name": {
+        "en": "Barsi Maharaja Ranjit Singh Ji",
+        "pa": "ਬਰਸੀ ਮਹਾਰਾਜਾ ਰਣਜੀਤ ਸਿੰਘ ਜੀ"
+      },
       "type": "celebration",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-07-05T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 21,
+        "month": "Harh",
+        "year": 557
+      },
+      "name": {
+        "en": "Miri Piri Divas",
+        "pa": "ਮੀਰੀ ਪੀਰੀ ਦਿਵਸ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-07-09T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 25,
+        "month": "Harh",
+        "year": 557
+      },
+      "name": {
+        "en": "Shaheedi Divas Bhai Mati Singh Ji",
+        "pa": "ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ ਭਾਈ ਮਤੀ ਸਿੰਘ ਜੀ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-07-18T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 3,
+        "month": "Sawan",
+        "year": 557
+      },
+      "name": {
+        "en": "Shaheedi Divas Bhai Dayala Ji",
+        "pa": "ਸ਼ਹੀਦੀ ਦਿਵਸ ਭਾਈ ਦਿਆਲਾ ਜੀ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
-      "type": "gurpurab",
-      "highlight": false
+      "gregorianDate": "2025-07-31T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 16,
+        "month": "Sawan",
+        "year": 557
+      },
+      "name": {
+        "en": "Raksha Bandhan",
+        "pa": "ਰਾਖੀ"
+      },
+      "type": "celebration",
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-08-05T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 21,
+        "month": "Sawan",
+        "year": 557
+      },
+      "name": {
+        "en": "Parkash Divas Guru Hargobind Sahib Ji",
+        "pa": "ਪ੍ਰਕਾਸ਼ ਦਿਵਸ ਗੁਰੂ ਹਰਗੋਬਿੰਦ ਸਾਹਿਬ ਜੀ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-08-07T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 23,
+        "month": "Sawan",
+        "year": 557
+      },
+      "name": {
+        "en": "Parkash Divas Guru Har Krishan Ji",
+        "pa": "ਪ੍ਰਕਾਸ਼ ਦਿਵਸ ਗੁਰੂ ਹਰ ਕ੍ਰਿਸ਼ਨ ਜੀ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-08-16T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 1,
+        "month": "Bhadon",
+        "year": 557
+      },
+      "name": {
+        "en": "First Parkash of Sri Guru Granth Sahib Ji",
+        "pa": "ਪਹਿਲਾ ਪ੍ਰਕਾਸ਼ ਸ੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਸਾਹਿਬ ਜੀ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
     },
     {
-      "nanakshahi": "undefined undefined 557",
+      "gregorianDate": "2025-09-21T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 7,
+        "month": "Assu",
+        "year": 557
+      },
+      "name": {
+        "en": "Final Parkash of Sri Guru Granth Sahib Ji",
+        "pa": "ਅੰਤਿਮ ਪ੍ਰਕਾਸ਼ ਸ੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਸਾਹਿਬ ਜੀ"
+      },
       "type": "gurpurab",
-      "highlight": false
+      "sgpcCompliant": true
+    },
+    {
+      "gregorianDate": "2025-09-23T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 9,
+        "month": "Assu",
+        "year": 557
+      },
+      "name": {
+        "en": "Parkash Divas Guru Ram Das Ji",
+        "pa": "ਪ੍ਰਕਾਸ਼ ਦਿਵਸ ਗੁਰੂ ਰਾਮ ਦਾਸ ਜੀ"
+      },
+      "type": "gurpurab",
+      "sgpcCompliant": true
+    },
+    {
+      "gregorianDate": "2025-10-02T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 18,
+        "month": "Assu",
+        "year": 557
+      },
+      "name": {
+        "en": "Gur Gaddi Divas Sri Guru Granth Sahib Ji",
+        "pa": "ਗੁਰ ਗੱਦੀ ਦਿਵਸ ਸ੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਸਾਹਿਬ ਜੀ"
+      },
+      "type": "gurpurab",
+      "sgpcCompliant": true
+    },
+    {
+      "gregorianDate": "2025-10-19T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 5,
+        "month": "Kattak",
+        "year": 557
+      },
+      "name": {
+        "en": "Shaheedi Divas Bhai Taru Singh Ji",
+        "pa": "ਸ਼ਹੀਦੀ ਦਿਵਸ ਭਾਈ ਤਾਰੂ ਸਿੰਘ ਜੀ"
+      },
+      "type": "gurpurab",
+      "sgpcCompliant": true
+    },
+    {
+      "gregorianDate": "2025-10-29T04:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 15,
+        "month": "Kattak",
+        "year": 557
+      },
+      "name": {
+        "en": "Bandi Chhor Divas",
+        "pa": "ਬੰਦੀ ਛੋੜ ਦਿਵਸ"
+      },
+      "type": "gurpurab",
+      "sgpcCompliant": true
+    },
+    {
+      "gregorianDate": "2025-11-06T05:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 23,
+        "month": "Kattak",
+        "year": 557
+      },
+      "name": {
+        "en": "Parkash Divas Guru Nanak Dev Ji",
+        "pa": "ਪ੍ਰਕਾਸ਼ ਦਿਵਸ ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਜੀ"
+      },
+      "type": "gurpurab",
+      "sgpcCompliant": true
+    },
+    {
+      "gregorianDate": "2025-12-07T05:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 24,
+        "month": "Maghar",
+        "year": 557
+      },
+      "name": {
+        "en": "Shaheedi Divas Guru Tegh Bahadur Ji",
+        "pa": "ਸ਼ਹੀਦੀ ਦਿਵਸ ਗੁਰੂ ਤੇਗ ਬਹਾਦੁਰ ਜੀ"
+      },
+      "type": "gurpurab",
+      "sgpcCompliant": true
+    },
+    {
+      "gregorianDate": "2026-01-02T05:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 13,
+        "month": "Poh",
+        "year": 557
+      },
+      "name": {
+        "en": "Shaheedi Divas Sahibzade",
+        "pa": "ਸ਼ਹੀਦੀ ਦਿਵਸ ਸਾਹਿਬਜ਼ਾਦੇ"
+      },
+      "type": "gurpurab",
+      "sgpcCompliant": true
+    },
+    {
+      "gregorianDate": "2026-01-05T05:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 16,
+        "month": "Poh",
+        "year": 557
+      },
+      "name": {
+        "en": "Parkash Divas Guru Gobind Singh Ji",
+        "pa": "ਪ੍ਰਕਾਸ਼ ਦਿਵਸ ਗੁਰੂ ਗੋਬਿੰਦ ਸਿੰਘ ਜੀ"
+      },
+      "type": "gurpurab",
+      "sgpcCompliant": true
+    },
+    {
+      "gregorianDate": "2026-02-18T05:00:00.000Z",
+      "nanakshahiDate": {
+        "day": 30,
+        "month": "Magh",
+        "year": 557
+      },
+      "name": {
+        "en": "Shaheedi Divas Chote Sahibzade",
+        "pa": "ਸ਼ਹੀਦੀ ਦਿਵਸ ਛੋਟੇ ਸਾਹਿਬਜ਼ਾਦੇ"
+      },
+      "type": "gurpurab",
+      "sgpcCompliant": true
     }
-  ]
-};
-
-// Rest of the web calendar code (same as web-calendar.js)
-// SGPC Nanakshahi Calendar Data for 557 NS (2025 CE)
-
-
-// Utility functions
-function formatDate(date) {
-    return date.toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-}
-
-function addDays(date, days) {
-    const result = new Date(date);
-    result.setDate(result.getDate() + days);
-    return result;
-}
-
-// Generate calendar HTML
-function generateCalendar() {
-    const calendarGrid = document.getElementById('calendar-grid');
-    
-    CALENDAR_DATA.months.forEach((month, index) => {
-        const monthCard = document.createElement('div');
-        monthCard.className = 'month-card';
-        
-        // Convert string date to Date object if needed
-        const startDate = typeof month.startDate === 'string' ? new Date(month.startDate) : month.startDate;
-        const endDate = addDays(startDate, month.days - 1);
-        
-        monthCard.innerHTML = `
-            <div class="month-header">
-                ${month.name} ${month.punjabi}
-            </div>
-            <div class="month-info">
-                <p><strong>Days:</strong> ${month.days} ${month.days === 32 ? '(Leap Year)' : ''}</p>
-                <p><strong>Start:</strong> ${formatDate(startDate)}</p>
-                <p><strong>End:</strong> ${formatDate(endDate)}</p>
-                <p><strong>Month:</strong> ${index + 1}/12</p>
-            </div>
-        `;
-        
-        // Add click handler for this specific card
-        monthCard.addEventListener('click', function() {
-            alert(`${month.name} (${month.punjabi}) has ${month.days} days\nStarts: ${formatDate(startDate)}\nEnds: ${formatDate(endDate)}`);
-        });
-        
-        // Add hover effect
-        monthCard.style.cursor = 'pointer';
-        monthCard.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px)';
-            this.style.transition = 'transform 0.2s ease';
-        });
-        
-        monthCard.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-        
-        calendarGrid.appendChild(monthCard);
-    });
-}
-
-// Generate Gurpurabs list
-function generateGurpurabs() {
-    const gurpurabList = document.getElementById('gurpurab-list');
-    
-    // Filter out broken gurpurabs and use fallback if needed
-    const validGurpurabs = CALENDAR_DATA.gurpurabs.filter(g => g.name && g.name !== 'undefined');
-    
-    // Use fallback data if gurpurabs are broken
-    const fallbackGurpurabs = [
-        {
-            name: 'Parkash Divas Sri Guru Gobind Singh Ji',
-            punjabi: 'ਪ੍ਰਕਾਸ਼ ਦਿਵਸ ਸ੍ਰੀ ਗੁਰੂ ਗੋਬਿੰਦ ਸਿੰਘ ਜੀ',
-            nanakshahi: '23 Poh 557',
-            gregorian: 'January 11, 2025',
-            type: 'fixed'
-        },
-        {
-            name: 'Maghi',
-            punjabi: 'ਮਾਘੀ',
-            nanakshahi: '13 Magh 557',
-            gregorian: 'January 31, 2025',
-            type: 'fixed'
-        },
-        {
-            name: 'Miri Piri Divas',
-            punjabi: 'ਮੀਰੀ ਪੀਰੀ ਦਿਵਸ',
-            nanakshahi: '22 Harh 557',
-            gregorian: 'July 5, 2025',
-            type: 'fixed',
-            highlight: true,
-            note: 'Community Corrected: Previously misidentified as Parkash Divas'
-        },
-        {
-            name: 'Parkash Divas Sri Guru Nanak Dev Ji',
-            punjabi: 'ਪ੍ਰਕਾਸ਼ ਦਿਵਸ ਸ੍ਰੀ ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਜੀ',
-            nanakshahi: '10 Cheit 557',
-            gregorian: 'March 28, 2025',
-            type: 'movable'
-        },
-        {
-            name: 'Bandi Chhorr Divas',
-            punjabi: 'ਬੰਦੀ ਛੋੜ ਦਿਵਸ',
-            nanakshahi: '5 Katik 557',
-            gregorian: 'October 25, 2025',
-            type: 'movable'
-        }
-    ];
-    
-    const gurpurabsToDisplay = validGurpurabs.length > 0 ? validGurpurabs : fallbackGurpurabs;
-    
-    gurpurabsToDisplay.forEach(gurpurab => {
-        const gurpurabItem = document.createElement('div');
-        gurpurabItem.className = 'gurpurab-item';
-        
-        if (gurpurab.highlight) {
-            gurpurabItem.style.borderLeftColor = '#28a745';
-            gurpurabItem.style.backgroundColor = '#f8fff8';
-        }
-        
-        gurpurabItem.innerHTML = `
-            <div class="gurpurab-date">
-                ${gurpurab.nanakshahi} • ${gurpurab.gregorian}
-                ${gurpurab.type === 'movable' ? '🌙' : '📅'}
-            </div>
-            <div class="gurpurab-name">${gurpurab.name}</div>
-            <div class="gurpurab-punjabi">${gurpurab.punjabi}</div>
-            ${gurpurab.note ? `<div style="font-size: 0.8rem; color: #28a745; margin-top: 5px;">✅ ${gurpurab.note}</div>` : ''}
-        `;
-        
-        // Add click handler for this specific gurpurab
-        gurpurabItem.addEventListener('click', function() {
-            const details = `${gurpurab.name}\n${gurpurab.punjabi}\n\n📅 Nanakshahi: ${gurpurab.nanakshahi}\n📅 Gregorian: ${gurpurab.gregorian}\n📍 Type: ${gurpurab.type === 'fixed' ? 'Fixed Date' : 'Movable (Lunar)'}${gurpurab.note ? `\n\n✅ ${gurpurab.note}` : ''}`;
-            alert(details);
-        });
-        
-        // Add hover effect
-        gurpurabItem.style.cursor = 'pointer';
-        gurpurabItem.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateX(5px)';
-            this.style.transition = 'transform 0.2s ease';
-        });
-        
-        gurpurabItem.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateX(0)';
-        });
-        
-        gurpurabList.appendChild(gurpurabItem);
-    });
-}
-
-// Continuous Calendar State - Now Nanakshahi-centric
-let currentNanakshahiMonth = 0; // Index of current Nanakshahi month (0-11)
-let currentNanakshahiYear = CALENDAR_DATA.year;
-
-// Generate continuous calendar - Nanakshahi-centric
-function generateContinuousCalendar() {
-    const monthYearElement = document.getElementById('calendar-month-year');
-    const monthSubtitleElement = document.getElementById('calendar-month-subtitle');
-    const calendarDatesElement = document.getElementById('calendar-dates');
-    
-    // Clear existing dates
-    calendarDatesElement.innerHTML = '';
-    
-    // Get current Nanakshahi month data
-    if (currentNanakshahiMonth < 0 || currentNanakshahiMonth >= CALENDAR_DATA.months.length) {
-        currentNanakshahiMonth = 0; // Reset to first month if out of bounds
+  ],
+  "statistics": {
+    "totalGurpurabs": 28,
+    "sgpcCompliant": true,
+    "corrections": {
+      "july5Fixed": true,
+      "jethLength": 32
     }
-    
-    const currentMonth = CALENDAR_DATA.months[currentNanakshahiMonth];
-    const monthStartDate = typeof currentMonth.startDate === 'string' ? 
-        new Date(currentMonth.startDate) : currentMonth.startDate;
-    
-    // Update header - Nanakshahi month as primary
-    monthYearElement.textContent = `${currentMonth.name} ${currentMonth.punjabi}`;
-    monthSubtitleElement.textContent = `${currentMonth.days} days • ${currentNanakshahiYear} NS (${currentNanakshahiYear + 1468} CE)`;
-    
-    // Calculate calendar grid starting from 1st of Nanakshahi month
-    const firstNanakshahiDate = new Date(monthStartDate);
-    const firstDayOfWeek = firstNanakshahiDate.getDay(); // 0 = Sunday, 1 = Monday, etc.
-    
-    // Start grid from Sunday of the week containing 1st Nanakshahi date
-    const gridStartDate = new Date(firstNanakshahiDate);
-    gridStartDate.setDate(gridStartDate.getDate() - firstDayOfWeek);
-    
-    // End grid after last day of Nanakshahi month, extending to Saturday
-    const lastNanakshahiDate = new Date(firstNanakshahiDate);
-    lastNanakshahiDate.setDate(lastNanakshahiDate.getDate() + currentMonth.days - 1);
-    const lastDayOfWeek = lastNanakshahiDate.getDay();
-    const gridEndDate = new Date(lastNanakshahiDate);
-    gridEndDate.setDate(gridEndDate.getDate() + (6 - lastDayOfWeek));
-    
-    const currentDate = new Date(gridStartDate);
-    const today = new Date();
-    
-    while (currentDate <= gridEndDate) {
-        const dateElement = document.createElement('div');
-        dateElement.className = 'calendar-date';
-        
-        // Check if this date falls within current Nanakshahi month
-        const isCurrentNanakshahiMonth = currentDate >= firstNanakshahiDate && currentDate <= lastNanakshahiDate;
-        const isToday = currentDate.toDateString() === today.toDateString();
-        
-        // Calculate Nanakshahi date number
-        let nanakshahiDateNumber = '';
-        let gregorianDateInfo = '';
-        
-        if (isCurrentNanakshahiMonth) {
-            // Calculate which day of the Nanakshahi month this is
-            const daysDiff = Math.floor((currentDate - firstNanakshahiDate) / (1000 * 60 * 60 * 24)) + 1;
-            nanakshahiDateNumber = daysDiff;
-            gregorianDateInfo = `${currentDate.getDate()} ${currentDate.toLocaleDateString('en-US', { month: 'short' })}`;
-        } else {
-            // This is a date from previous/next month - show Gregorian
-            dateElement.classList.add('other-month');
-            nanakshahiDateNumber = currentDate.getDate();
-            gregorianDateInfo = currentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-        }
-        
-        if (isToday) {
-            dateElement.classList.add('today');
-        }
-        
-        // Check for events on this date
-        const eventsOnDate = findEventsOnDate(currentDate);
-        if (eventsOnDate.length > 0) {
-            dateElement.classList.add('has-event');
-        }
-        
-        // Create date content
-        const dateNumberElement = document.createElement('div');
-        dateNumberElement.className = 'calendar-date-number';
-        dateNumberElement.textContent = nanakshahiDateNumber;
-        
-        // Add Gregorian date info
-        const gregorianElement = document.createElement('div');
-        gregorianElement.className = 'calendar-gregorian-date';
-        gregorianElement.style.fontSize = '0.7rem';
-        gregorianElement.style.color = isCurrentNanakshahiMonth ? '#888' : '#ccc';
-        gregorianElement.style.marginBottom = '2px';
-        gregorianElement.textContent = gregorianDateInfo;
-        
-        const eventsElement = document.createElement('div');
-        eventsElement.className = 'calendar-date-events';
-        if (eventsOnDate.length > 0) {
-            eventsElement.textContent = eventsOnDate.slice(0, 1).map(e => e.shortName || e.name.substring(0, 6) + '...').join(', ');
-        }
-        
-        dateElement.appendChild(gregorianElement);
-        dateElement.appendChild(dateNumberElement);
-        dateElement.appendChild(eventsElement);
-        
-        // Add click handler
-        dateElement.addEventListener('click', function() {
-            const nanakshahiInfo = isCurrentNanakshahiMonth ? 
-                `${nanakshahiDateNumber} ${currentMonth.name} ${currentNanakshahiYear} NS` : 
-                'Other month';
-            
-            if (eventsOnDate.length > 0) {
-                const eventDetails = eventsOnDate.map(e => 
-                    `${e.name}\n${e.punjabi || ''}\n${e.nanakshahi || ''}`
-                ).join('\n\n');
-                alert(`${formatDate(currentDate)}\n${nanakshahiInfo}\n\n${eventDetails}`);
-            } else {
-                alert(`${formatDate(currentDate)}\n${nanakshahiInfo}\n\nNo events on this date`);
-            }
-        });
-        
-        calendarDatesElement.appendChild(dateElement);
-        currentDate.setDate(currentDate.getDate() + 1);
-    }
+  }
 }
 
-// Find current Nanakshahi month based on today's date
-function findCurrentNanakshahiMonth() {
-    const today = new Date();
-    
-    for (let i = 0; i < CALENDAR_DATA.months.length; i++) {
-        const month = CALENDAR_DATA.months[i];
-        const startDate = typeof month.startDate === 'string' ? new Date(month.startDate) : month.startDate;
-        const endDate = addDays(startDate, month.days - 1);
-        
-        if (today >= startDate && today <= endDate) {
-            return i;
-        }
-    }
-    
-    // If not found, return current month index based on rough estimate
-    return Math.min(Math.floor((new Date().getMonth() + 9) % 12), CALENDAR_DATA.months.length - 1);
+// Export for use in web calendar
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = NANAKSHAHI_CALENDAR_DATA
+} else if (typeof window !== 'undefined') {
+  window.NANAKSHAHI_CALENDAR_DATA = NANAKSHAHI_CALENDAR_DATA
 }
-
-// Find events on a specific date
-function findEventsOnDate(date) {
-    const events = [];
-    
-    // Check gurpurabs
-    for (const gurpurab of CALENDAR_DATA.gurpurabs) {
-        if (gurpurab.gregorian && gurpurab.gregorian !== 'undefined') {
-            const eventDate = new Date(gurpurab.gregorian);
-            if (eventDate.toDateString() === date.toDateString()) {
-                events.push({
-                    ...gurpurab,
-                    shortName: gurpurab.name.includes('Parkash') ? 'Parkash' : 
-                              gurpurab.name.includes('Shaheedi') ? 'Shaheedi' :
-                              gurpurab.name.includes('Miri Piri') ? 'Miri Piri' :
-                              gurpurab.name.split(' ')[0]
-                });
-            }
-        }
-    }
-    
-    // Add fallback events for known dates
-    const fallbackEvents = [
-        { date: '2025-01-11', name: 'Parkash Divas Sri Guru Gobind Singh Ji', shortName: 'Parkash' },
-        { date: '2025-01-31', name: 'Maghi', shortName: 'Maghi' },
-        { date: '2025-03-20', name: 'Holla Mohalla', shortName: 'Holla' },
-        { date: '2025-03-28', name: 'Parkash Divas Sri Guru Nanak Dev Ji', shortName: 'Parkash' },
-        { date: '2025-07-05', name: 'Miri Piri Divas', shortName: 'Miri Piri' },
-        { date: '2025-10-25', name: 'Bandi Chhorr Divas', shortName: 'Bandi Chhorr' }
-    ];
-    
-    for (const event of fallbackEvents) {
-        const eventDate = new Date(event.date);
-        if (eventDate.toDateString() === date.toDateString()) {
-            const existing = events.find(e => e.name === event.name);
-            if (!existing) {
-                events.push(event);
-            }
-        }
-    }
-    
-    return events;
-}
-
-// Navigation functions - Now for Nanakshahi months
-function navigateMonth(direction) {
-    if (direction === 'prev') {
-        currentNanakshahiMonth--;
-        if (currentNanakshahiMonth < 0) {
-            // Go to previous year if we have data for it
-            if (currentNanakshahiYear > 556) { // Don't go below year 556
-                currentNanakshahiMonth = 11;
-                currentNanakshahiYear--;
-                // Note: This would require loading data for previous year
-                // For now, just reset to month 0
-                currentNanakshahiMonth = 0;
-            } else {
-                currentNanakshahiMonth = 0; // Stay at first month
-            }
-        }
-    } else {
-        currentNanakshahiMonth++;
-        if (currentNanakshahiMonth >= CALENDAR_DATA.months.length) {
-            // Go to next year if we have data for it
-            if (currentNanakshahiYear < 561) { // Don't go beyond year 561
-                currentNanakshahiMonth = 0;
-                currentNanakshahiYear++;
-                // Note: This would require loading data for next year
-                // For now, just reset to last month
-                currentNanakshahiMonth = CALENDAR_DATA.months.length - 1;
-            } else {
-                currentNanakshahiMonth = CALENDAR_DATA.months.length - 1; // Stay at last month
-            }
-        }
-    }
-    generateContinuousCalendar();
-}
-
-// Initialize calendar when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Set current Nanakshahi month
-    currentNanakshahiMonth = findCurrentNanakshahiMonth();
-    
-    generateContinuousCalendar();
-    generateCalendar();
-    generateGurpurabs();
-    
-    // Add navigation event listeners
-    document.getElementById('prev-month').addEventListener('click', () => navigateMonth('prev'));
-    document.getElementById('next-month').addEventListener('click', () => navigateMonth('next'));
-    
-    // Update page title with current year
-    document.title = `Enhanced Nanakshahi Calendar ${CALENDAR_DATA.year} NS (${CALENDAR_DATA.ceYear} CE)`;
-    
-    // Add dynamic stats
-    const totalGurpurabs = CALENDAR_DATA.gurpurabs.length;
-    const fixedGurpurabs = CALENDAR_DATA.gurpurabs.filter(g => g.type === 'fixed').length;
-    const movableGurpurabs = CALENDAR_DATA.gurpurabs.filter(g => g.type === 'movable').length;
-    
-    console.log(`📊 Calendar Statistics:`);
-    console.log(`📅 Total Days: ${CALENDAR_DATA.totalDays}`);
-    console.log(`🙏 Total Gurpurabs: ${totalGurpurabs}`);
-    console.log(`📌 Fixed Gurpurabs: ${fixedGurpurabs}`);
-    console.log(`🌙 Movable Gurpurabs: ${movableGurpurabs}`);
-    console.log(`✅ Enhanced Calendar: Miri Piri Divas on July 5th (22 Harh 557)`);
-    console.log(`📊 Jeth Month: ${CALENDAR_DATA.months[2].days} days (Leap Year)`);
-    
-});
-
-// Export calendar data for external use
-window.SGPC_CALENDAR = CALENDAR_DATA; 

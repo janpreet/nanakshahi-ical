@@ -19,7 +19,9 @@ console.log('✨ Creating beautiful interactive calendar...')
 const currentDate = new Date()
 const currentNanakshahiYear = currentDate.getFullYear() - 1468
 
-// Generate calendar data for web display
+// Generate calendar data for web display using the correct function
+const calendarDataFromSGPC = sgpc.generateCalendarData(currentNanakshahiYear)
+
 const calendarData = {
   metadata: {
     generated: new Date().toISOString(),
@@ -38,21 +40,15 @@ const calendarData = {
   }
 }
 
-// Generate month data
-const monthNames = ['Chet', 'Vaisakh', 'Jeth', 'Harh', 'Sawan', 'Bhadon', 'Assu', 'Kattak', 'Maghar', 'Poh', 'Magh', 'Phagan']
-const monthNamesGurmukhi = ['ਚੇਤ', 'ਵੈਸਾਖ', 'ਜੇਠ', 'ਹਾੜ', 'ਸਾਵਣ', 'ਭਾਦੋਂ', 'ਅੱਸੂ', 'ਕੱਤਕ', 'ਮੱਘਰ', 'ਪੋਹ', 'ਮਾਘ', 'ਫੱਗਣ']
-
-monthNames.forEach((monthName, index) => {
-  const monthData = sgpc.getMonthData(currentNanakshahiYear, index + 1)
-  calendarData.months.push({
-    index: index + 1,
-    name: monthName,
-    nameGurmukhi: monthNamesGurmukhi[index],
-    days: monthData.days,
-    startDate: monthData.startDate,
-    endDate: monthData.endDate
-  })
-})
+// Generate month data from SGPC data
+calendarData.months = calendarDataFromSGPC.months.map((month, index) => ({
+  index: index + 1,
+  name: month.name,
+  nameGurmukhi: month.punjabi,
+  days: month.days,
+  startDate: month.startDate.toISOString(),
+  endDate: new Date(month.startDate.getTime() + (month.days * 24 * 60 * 60 * 1000)).toISOString()
+}))
 
 // Get all Gurpurabs for the year
 const allGurpurabs = sgpc.getAllGurpurabsForYear(currentNanakshahiYear)
