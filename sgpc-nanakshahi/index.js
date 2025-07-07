@@ -97,7 +97,8 @@ module.exports = {
     })
 
     const gurpurabs = getAllGurpurabsForYear(year)
-    const movableGurpurabsList = movableGurpurabs.getMovableGurpurabsForYear(year)
+    const gregorianYear = year + 1468 // Convert Nanakshahi to Gregorian year
+    const movableGurpurabsList = movableGurpurabs.getMovableGurpurabsForYear(gregorianYear)
 
     const gurpurabsData = [...gurpurabs, ...movableGurpurabsList].map(gurpurab => ({
       name: gurpurab.name,

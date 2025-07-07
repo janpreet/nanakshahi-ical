@@ -162,6 +162,12 @@ function getSGPCComplianceStatus () {
       july5Fixed: true,
       jethLengthCorrected: true,
       movableGurpurabs: true
+    },
+    features: {
+      accurateCalendar: true,
+      movableGurpurabs: true,
+      communityDriven: true,
+      sgpcCompliant: true
     }
   }
 }
@@ -172,11 +178,20 @@ function getSGPCComplianceStatus () {
  * @returns {Object} Calendar data
  */
 function getCalendarData (nanakshahiYear) {
+  const monthLengths = calendarData.getMonthLengths(nanakshahiYear)
+  const allGurpurabs = gurpurabData.getAllGurpurabsForYear(nanakshahiYear)
+
   return {
     year: nanakshahiYear,
-    monthLengths: calendarData.getMonthLengths(nanakshahiYear),
+    monthLengths,
     totalDays: calendarData.getDaysInYear(nanakshahiYear),
-    status: calendarData.checkCalendarDataStatus(nanakshahiYear)
+    status: calendarData.checkCalendarDataStatus(nanakshahiYear),
+    months: calendarData.NANAKSHAHI_MONTHS.en.map((month, index) => ({
+      name: month,
+      days: monthLengths[index],
+      index: index + 1
+    })),
+    gurpurabs: allGurpurabs
   }
 }
 
@@ -202,6 +217,8 @@ function validateDate (gregorianDate) {
  */
 function getMigrationGuide () {
   return {
+    from: 'nanakshahi-js',
+    to: 'sgpc-nanakshahi',
     message: 'Successfully migrated to SGPC-compliant Nanakshahi calendar',
     changes: [
       'July 5th now correctly shows Miri Piri Divas',
