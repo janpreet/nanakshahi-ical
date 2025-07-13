@@ -1,4 +1,4 @@
-name: SGPC Nanakshahi Calendar CI
+name: Calendar CI
 
 on:
   push:
