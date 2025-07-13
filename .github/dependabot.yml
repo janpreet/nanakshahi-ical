@@ -1,0 +1,112 @@
+version: 2
+updates:
+  # Enable npm dependency updates
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    # Limit the number of open PRs
+    open-pull-requests-limit: 10
+    # Group security updates
+    groups:
+      security-updates:
+        patterns:
+          - "*"
+      patch-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+        exclude-patterns:
+          - "@babel/*"
+          - "eslint*"
+          - "jest*"
+          - "typescript*"
+      babel-updates:
+        patterns:
+          - "@babel/*"
+          - "babel-*"
+      dev-dependencies:
+        patterns:
+          - "eslint*"
+          - "jest*"
+          - "typescript*"
+          - "@types/*"
+        dependency-type: "development"
+    # Custom commit message to work with release workflow
+    commit-message:
+      prefix: "fix"
+      prefix-development: "chore"
+      include: "scope"
+    # Add labels for better organization
+    labels:
+      - "dependencies"
+      - "automated"
+    # Allow auto-merge for patch security updates
+    allow:
+      - dependency-type: "all"
+    # Ignore certain dependencies that need manual review
+    ignore:
+      - dependency-name: "node"
+        versions: [">=19.0.0"]
+      - dependency-name: "npm"
+        versions: [">=9.0.0"]
+    # Reviewers (optional - add your GitHub username)
+    reviewers:
+      - "janpreet"
+    # Target specific branches
+    target-branch: "main"
+
+  # Enable npm dependency updates for sgpc-nanakshahi subdirectory
+  - package-ecosystem: "npm"
+    directory: "/sgpc-nanakshahi"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:30"
+    open-pull-requests-limit: 5
+    groups:
+      sgpc-security-updates:
+        patterns:
+          - "*"
+      sgpc-patch-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+    commit-message:
+      prefix: "fix"
+      prefix-development: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "sgpc-nanakshahi"
+      - "automated"
+    reviewers:
+      - "janpreet"
+    target-branch: "main"
+
+  # Enable GitHub Actions dependency updates
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "10:00"
+    open-pull-requests-limit: 5
+    groups:
+      actions-updates:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    labels:
+      - "github-actions"
+      - "dependencies"
+      - "automated"
+    reviewers:
+      - "janpreet"
+    target-branch: "main" 
