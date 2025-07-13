@@ -53,9 +53,7 @@ updates:
         versions: [">=19.0.0"]
       - dependency-name: "npm"
         versions: [">=9.0.0"]
-    # Reviewers (optional - add your GitHub username)
-    reviewers:
-      - "janpreet"
+    # Reviewers now handled by CODEOWNERS file
     # Target specific branches
     target-branch: "main"
 
@@ -84,8 +82,6 @@ updates:
       - "dependencies"
       - "sgpc-nanakshahi"
       - "automated"
-    reviewers:
-      - "janpreet"
     target-branch: "main"
 
   # Enable GitHub Actions dependency updates
@@ -107,6 +103,4 @@ updates:
       - "github-actions"
       - "dependencies"
       - "automated"
-    reviewers:
-      - "janpreet"
     target-branch: "main" 
