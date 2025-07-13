@@ -1,5 +1,5 @@
 # nanakshahi-ical
-[![SGPC Nanakshahi Calendar CI](https://github.com/janpreet/nanakshahi-ical/actions/workflows/main.yml/badge.svg)](https://github.com/janpreet/nanakshahi-ical/actions/workflows/main.yml)
+[![CI](https://github.com/janpreet/nanakshahi-ical/actions/workflows/main.yml/badge.svg)](https://github.com/janpreet/nanakshahi-ical/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/janpreet/nanakshahi-ical/graph/badge.svg?token=OMQ92VQEBI)](https://codecov.io/gh/janpreet/nanakshahi-ical)
 [![Maintainability](https://qlty.sh/gh/janpreet/projects/nanakshahi-ical/maintainability.svg)](https://qlty.sh/gh/janpreet/projects/nanakshahi-ical)
 
