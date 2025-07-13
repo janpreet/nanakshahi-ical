@@ -30,7 +30,7 @@ jobs:
       - name: Run SGPC Compliance Tests
         run: npm run test-sgpc
       - name: Upload Coverage to CodeCov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./coverage/lcov.info
