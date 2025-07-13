@@ -24,10 +24,12 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'push' && 
+       (startsWith(github.event.head_commit.message, 'fix:') || 
+        startsWith(github.event.head_commit.message, 'feat:'))) ||
       (github.event_name == 'pull_request' && github.event.pull_request.merged == true &&
-       (contains(github.event.pull_request.head.ref, 'feature/') || 
-        contains(github.event.pull_request.head.ref, 'fix/') ||
-        contains(github.event.pull_request.head.ref, 'hotfix/')))
+       (startsWith(github.event.pull_request.head.ref, 'fix/') || 
+        startsWith(github.event.pull_request.head.ref, 'feat/')))
     
     steps:
       - name: Checkout
@@ -54,102 +56,43 @@ jobs:
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "type=${{ github.event.inputs.version_type }}" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.event.pull_request.head.ref }}" == feature/* ]]; then
-            echo "type=minor" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.event.pull_request.head.ref }}" == fix/* ]] || [[ "${{ github.event.pull_request.head.ref }}" == hotfix/* ]]; then
-            echo "type=patch" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event_name }}" == "push" ]]; then
+            # Handle commit message-based versioning
+            if [[ "${{ github.event.head_commit.message }}" == feat:* ]]; then
+              echo "type=minor" >> $GITHUB_OUTPUT
+            else
+              echo "type=patch" >> $GITHUB_OUTPUT
+            fi
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            # Handle branch name-based versioning
+            if [[ "${{ github.event.pull_request.head.ref }}" == feat/* ]]; then
+              echo "type=minor" >> $GITHUB_OUTPUT
+            else
+              echo "type=patch" >> $GITHUB_OUTPUT
+            fi
           else
             echo "type=patch" >> $GITHUB_OUTPUT
           fi
       
-      - name: Bump Version
-        id: bump
+      - name: Release
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # Get current version
-          current_version=$(node -p "require('./package.json').version")
-          echo "Current version: $current_version"
-          
-          # Bump version
-          npm version ${{ steps.version.outputs.type }} --no-git-tag-version
+          # Bump version and create release
+          npm version ${{ steps.version.outputs.type }}
           
           # Also bump sgpc-nanakshahi version
           cd sgpc-nanakshahi
           npm version ${{ steps.version.outputs.type }} --no-git-tag-version
           cd ..
           
-          # Get new version
-          new_version=$(node -p "require('./package.json').version")
-          echo "New version: $new_version"
-          echo "version=$new_version" >> $GITHUB_OUTPUT
-      
-      - name: Generate Release Notes
-        id: release_notes
-        run: |
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            pr_title="${{ github.event.pull_request.title }}"
-            pr_body="${{ github.event.pull_request.body }}"
-            pr_number="${{ github.event.pull_request.number }}"
-            branch_name="${{ github.event.pull_request.head.ref }}"
-            
-            cat > release_notes.md << EOF
-          ## 🚀 Release v${{ steps.bump.outputs.version }}
-          
-          ### Changes
-          - $pr_title ([#$pr_number](https://github.com/janpreet/nanakshahi-ical/pull/$pr_number))
-          
-          ### Branch
-          - **$branch_name** → main
-          
-          ### Details
-          $pr_body
-          
-          ### Automated Release
-          This release was automatically created when the $branch_name branch was merged to main.
-          EOF
-          else
-            cat > release_notes.md << EOF
-          ## 🚀 Release v${{ steps.bump.outputs.version }}
-          
-          ### Manual Release
-          This release was manually triggered.
-          
-          ### Version Bump
-          - Type: ${{ steps.version.outputs.type }}
-          - Version: ${{ steps.bump.outputs.version }}
-          EOF
-          fi
-      
-      - name: Commit Version Bump
-        run: |
-          git add package.json sgpc-nanakshahi/package.json
-          git commit -m "🔖 Bump version to ${{ steps.bump.outputs.version }}"
-          git push
-      
-      - name: Create GitHub Release
-        uses: actions/create-release@v1
+          # Push changes and tags
+          git push --follow-tags
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ steps.bump.outputs.version }}
-          release_name: Release v${{ steps.bump.outputs.version }}
-          body_path: release_notes.md
-          draft: false
-          prerelease: false
       
       - name: Publish to npm
-        run: |
-          echo "🚀 Publishing to npm..."
-          npm publish
-          echo "✅ Published nanakshahi-ical@${{ steps.bump.outputs.version }}"
+        run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      
-      - name: Notify Success
-        run: |
-          echo "🎉 Release completed successfully!"
-          echo "📦 Package: https://www.npmjs.com/package/nanakshahi-ical"
-          echo "🏷️ Version: ${{ steps.bump.outputs.version }}"
-          echo "📋 Release: https://github.com/janpreet/nanakshahi-ical/releases/tag/v${{ steps.bump.outputs.version }}" 
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} 
