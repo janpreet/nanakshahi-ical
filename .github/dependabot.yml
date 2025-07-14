@@ -49,10 +49,10 @@ updates:
       - dependency-type: "all"
     # Ignore certain dependencies that need manual review
     ignore:
-      - dependency-name: "node"
-        versions: [">=19.0.0"]
-      - dependency-name: "npm"
-        versions: [">=9.0.0"]
+      - dependency-name: "jest*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "eslint*"
+        update-types: ["version-update:semver-major"]
     # Reviewers now handled by CODEOWNERS file
     # Target specific branches
     target-branch: "main"
