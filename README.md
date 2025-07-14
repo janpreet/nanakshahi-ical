@@ -2,6 +2,8 @@
 [![CI](https://github.com/janpreet/nanakshahi-ical/actions/workflows/main.yml/badge.svg)](https://github.com/janpreet/nanakshahi-ical/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/janpreet/nanakshahi-ical/graph/badge.svg?token=OMQ92VQEBI)](https://codecov.io/gh/janpreet/nanakshahi-ical)
 [![Maintainability](https://qlty.sh/gh/janpreet/projects/nanakshahi-ical/maintainability.svg)](https://qlty.sh/gh/janpreet/projects/nanakshahi-ical)
+![NPM Downloads](https://img.shields.io/npm/dy/nanakshahi-ical)
+
 
 This script generates an ICS file for the Nanakshahi calendar that includes both daily calendar dates and Sikh religious holidays. It displays:
 - Daily Nanakshahi dates in both English and Punjabi.
