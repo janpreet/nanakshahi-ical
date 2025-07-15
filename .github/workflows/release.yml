@@ -22,9 +22,6 @@ jobs:
   release:
     name: Release & Publish
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      id-token: write
     if: |
       github.event_name == 'workflow_dispatch' ||
       (github.event_name == 'push' && 
@@ -87,6 +84,12 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          
+          # Commit any uncommitted changes (from dependency updates)
+          git add .
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update dependencies"
+          fi
           
           # Bump version and create release
           npm version ${{ steps.version.outputs.type }}
