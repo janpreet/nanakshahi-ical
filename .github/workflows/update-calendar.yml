@@ -162,8 +162,8 @@ jobs:
     - name: Commit changes
       if: steps.check_updates.outputs.has_changes == 'true'
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "sevadaar@users.noreply.github.com"
+        git config --local user.name "Sevadaar"
         
         git add .
         git commit -m "📅 Update SGPC calendar data for Nanakshahi Year ${{ steps.target_year.outputs.year }}

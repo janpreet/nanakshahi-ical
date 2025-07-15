@@ -82,13 +82,13 @@ jobs:
       
       - name: Release
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "sevadaar@users.noreply.github.com"
+          git config --local user.name "Sevadaar"
           
           # Commit any uncommitted changes (from dependency updates)
           git add .
           if ! git diff --cached --quiet; then
-            git commit -m "chore: update dependencies"
+            git commit -m "📦 chore: update dependencies" -m "🙏 Automated dependency updates by Sevadaar" -m "✨ Keeping the calendar system secure and up-to-date"
           fi
           
           # Bump version and create release
