@@ -125,10 +125,10 @@ jobs:
     
     - name: Upload Coverage to CodeCov
       if: steps.check_updates.outputs.has_changes == 'true'
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./coverage/lcov.info
+        files: ./coverage/lcov.info
         flags: calendar-update
         name: codecov-calendar-update
         fail_ci_if_error: false
@@ -174,7 +174,7 @@ jobs:
     
     - name: Create Pull Request
       if: steps.check_updates.outputs.has_changes == 'true'
-      uses: peter-evans/create-pull-request@v5
+      uses: peter-evans/create-pull-request@v7
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: "📅 Update SGPC calendar data for Nanakshahi Year ${{ steps.target_year.outputs.year }}"
@@ -182,7 +182,7 @@ jobs:
         body: |
           ## 📅 Automated Calendar Update
           
-          This PR updates the SGPC Nanakshahi calendar data for **Nanakshahi Year ${{ steps.target_year.outputs.year }}** (Gregorian Year ${{ steps.target_year.outputs.year + 1468 }}).
+          This PR updates the SGPC Nanakshahi calendar data for **Nanakshahi Year ${{ steps.target_year.outputs.year }}** (Gregorian Year ${{ steps.target_year.outputs.year }} + 1468).
           
           ### Changes Made:
           - 📊 Added official SGPC calendar data for ${{ steps.target_year.outputs.year }}
@@ -230,7 +230,7 @@ jobs:
         body: |
           ## 📅 SGPC Calendar Update
           
-          Updated calendar data for **Nanakshahi Year ${{ steps.target_year.outputs.year }}** (Gregorian ${{ steps.target_year.outputs.year + 1468 }}).
+          Updated calendar data for **Nanakshahi Year ${{ steps.target_year.outputs.year }}** (Gregorian ${{ steps.target_year.outputs.year }} + 1468).
           
           ### What's New:
           - 📊 Official SGPC calendar data for ${{ steps.target_year.outputs.year }}
