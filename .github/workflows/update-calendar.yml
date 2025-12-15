@@ -24,13 +24,13 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         # Use a token that can create PRs
         token: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: '18'
         registry-url: 'https://registry.npmjs.org'
@@ -174,7 +174,7 @@ jobs:
     
     - name: Create Pull Request
       if: steps.check_updates.outputs.has_changes == 'true'
-      uses: peter-evans/create-pull-request@v7
+      uses: peter-evans/create-pull-request@v8
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: "📅 Update SGPC calendar data for Nanakshahi Year ${{ steps.target_year.outputs.year }}"
