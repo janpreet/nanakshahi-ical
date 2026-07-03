@@ -1,96 +1,103 @@
 # nanakshahi-ical
-[![CI](https://github.com/janpreet/nanakshahi-ical/actions/workflows/main.yml/badge.svg)](https://github.com/janpreet/nanakshahi-ical/actions/workflows/main.yml)
-[![codecov](https://codecov.io/gh/janpreet/nanakshahi-ical/graph/badge.svg?token=OMQ92VQEBI)](https://codecov.io/gh/janpreet/nanakshahi-ical)
-[![Maintainability](https://qlty.sh/gh/janpreet/projects/nanakshahi-ical/maintainability.svg)](https://qlty.sh/gh/janpreet/projects/nanakshahi-ical)
-![NPM Downloads](https://img.shields.io/npm/dy/nanakshahi-ical)
 
+[![CI](https://github.com/janpreet/nanakshahi-ical/actions/workflows/ci.yml/badge.svg)](https://github.com/janpreet/nanakshahi-ical/actions/workflows/ci.yml)
 
-This script generates an ICS file for the Nanakshahi calendar that includes both daily calendar dates and Sikh religious holidays. It displays:
-- Daily Nanakshahi dates in both English and Punjabi.
-- Day of the week in both languages.
-- All Gurpurabs and historical events.
-- Nanakshahi year (NS - Nanakshahi Samvat).
+A Nanakshahi calendar engine, subscribable ICS feed, and web calendar that follow the
+**official Nanakshahi Jantri** (the printed calendar published yearly from Amritsar):
+Gurpurabs, itihasik dihade, bhagat sahiban de dihade, sangrands, massia and purnmashi.
 
-## Key Features
+The Jantri in current practice is the Bikrami calendar under Nanakshahi labels: month starts are
+true sidereal **sankrantis** (so month lengths change every year — Jeth had 32 days in NS 557, Sawan
+has 32 in NS 558), and every Guru parkash / gurgaddi / joti-jot day moves on a **Bikrami tithi**
+(e.g. Parkash Guru Nanak Dev Ji = Katak purnmashi). No fixed table of dates can be correct two
+years running — so this project doesn't use one.
 
-- **SGPC Compliant**: July 5th correctly shows "Miri Piri Divas" instead of "Parkash Divas"
-- **Accurate Month Lengths**: Jeth 2025 has 32 days as per SGPC calendar
-- **Enhanced Data**: Uses official SGPC calendar data with community corrections
-- **Automated Updates**: GitHub Actions workflow for yearly calendar maintenance
+## Pinned vs estimated — read this before trusting a date
 
-## Usage
+Every date this project emits is one of two kinds, and they are visibly distinguished everywhere
+(ICS titles, descriptions, and the web calendar):
 
-### Apple Calendar
-You can subscribe to this calendar from your Apple calendar by following these steps:
+- **Confirmed** — the date was extracted from a published Jantri, digit by digit, and carries its
+  source page (`data/pinned/ns557.json` etc.). Years currently pinned: **NS 549 (2017-18),
+  557 (2025-26), 558 (2026-27)**. These always win.
+- **≈ Estimated** — no Jantri has been published for that year yet, so the date comes from the
+  astronomical model below. Estimated titles carry a `≈` prefix in the ICS feed and web calendar.
+  When the real Jantri appears, pin it (see below) and the confirmed dates replace the estimates.
 
-1. Open the Calendar app on your Mac.
-2. Choose File > New Calendar Subscription.
-3. Enter [this URL](https://raw.githubusercontent.com/janpreet/nanakshahi-ical/main/nanakshahi.ics) in the "Calendar URL" field.
-4. Click Subscribe.
-5. Customize the settings for the calendar subscription, such as the name and color.
-6. Click OK.
+Two events are special even when estimated: **Bandi Chhor Divas (Diwali)** and **Darbar Khalsa
+(Dussehra)** follow festival conventions (pradosh/aparahna) that the Jantri itself has applied
+inconsistently between years — their estimated dates can shift by one day and say so in their
+description. A few events (e.g. Sirjana Divas Sri Akal Takht) follow no consistent rule across
+published years and are emitted **only** for pinned years, never guessed.
 
-### Google Calendar
-To add this calendar to Google Calendar:
+## The computed model (for unpinned years)
 
-1. Open Google Calendar
-2. Click the "+" next to "Other calendars"
-3. Select "From URL"
-4. Enter [this URL](https://raw.githubusercontent.com/janpreet/nanakshahi-ical/main/nanakshahi.ics)
-5. Click "Add calendar"
+Calibrated against every data point of the three pinned years — 36/36 sangrands and 130/132
+tithi-event dates exactly (the other 2 are the one-day festival cases above):
 
-### Web Calendar
-View the interactive calendar online: https://janpreet.github.io/nanakshahi-ical/
+- **Solar**: drik sidereal sankranti (Lahiri-type ayanamsa, 23.8532° at J2000), assigned to the
+  **sunrise-to-sunrise day at Amritsar** containing the sankranti — a sankranti after midnight but
+  before sunrise belongs to the previous civil day.
+- **Lunar**: sunrise (udaya) tithi at Amritsar; purnimanta month labels over amanta months; the
+  amanta month containing the Mesha sankranti is Chet; a month with no sankranti is adhik and is
+  skipped; a skipped (kshaya) tithi's event lands on the day the tithi runs; a repeated (vridhi)
+  tithi takes the first day.
 
-## Development
+All parameters live in [`data/calibration.json`](data/calibration.json) — ayanamsa, location,
+day-assignment rules — editable without touching code. Per-event rules (tithi / fixed-solar /
+fixed-Gregorian / pinned-only) live in [`data/events.json`](data/events.json).
 
-### Generate Calendar Locally
+## Using it
 
 ```bash
 npm install
-npm start
+npm test          # validates the model against every pinned data point
+npm run build     # writes docs/nanakshahi.ics and docs/data.json
 ```
 
-This creates `nanakshahi.ics` with all Gurpurabs and events for the current year.
+- **Subscribe**: point your calendar app at the published `nanakshahi.ics` (GitHub Pages serves
+  `docs/`). The feed covers all pinned years plus the next years as estimates.
+- **Web calendar**: `docs/index.html` — month-by-month view with confirmed/estimated badges,
+  Punjabi and English names, sangrand/massia/purnmashi per month.
+- **Library**:
 
-### Using in Your Project
-
-```javascript
-const sgpc = require('./sgpc-nanakshahi')
-
-// Get all Gurpurabs for current year
-const gurpurabs = sgpc.getAllGurpurabsForYear(557) // 2025
-
-// Convert dates
-const gregorianDate = new Date('2025-07-05')
-const nanakshahiDate = sgpc.getNanakshahiDate(gregorianDate)
-console.log(nanakshahiDate) // 21 Harh 557
-
-// Check for Gurpurabs on a specific date
-const gurpurabsToday = sgpc.getGurpurabsForDay(gregorianDate)
-console.log(gurpurabsToday) // [{ en: 'Miri Piri Divas', pa: 'ਮੀਰੀ ਪੀਰੀ ਦਿਵਸ', type: 'gurpurab' }]
+```js
+import { Engine } from './src/engine.js';
+const engine = new Engine();
+engine.buildYear(559);            // months, lunar days, events — tagged confirmed/estimated
+engine.yearTable(560).sangrands;  // computed sangrand dates
 ```
 
-### Testing
+## Personal overrides
 
-```bash
-npm test                    # All tests
-npm run test-sgpc          # SGPC compliance tests
-npm run validate-calendar  # Calendar validation
-```
+Copy `data/overrides.sample.json` to `data/overrides.json` (gitignored, purely local — nothing is
+ever fetched) to add your own observances, hide events, or rename them. Overrides are applied last,
+over both pinned and computed data. This is deliberately a different file from `calibration.json`:
+calibration tunes the astronomy, overrides change what appears in *your* calendar.
 
-## Data Sources
+## Adding next year's Jantri (the yearly refresh)
 
-This project uses data from official SGPC calendar publications and is enhanced through community corrections. It is not affiliated with SGPC but serves the community by providing accurate calendar data.
+This is a deliberate 15-minute manual task — no scraping, no pretend automation:
 
-- **Primary Source**: Official SGPC Jantri publications (https://sgpc.net)
-- **Corrections**: Community-verified corrections database
-- **Baseline**: nanakshahi-js library calculations
+1. Get the new Jantri PDF (or poster) when it's published.
+2. Render pages to images (`pdftoppm -png -r 300` — the PDFs have no text layer) and read off the
+   12 sangrand dates, massia/purnmashi days, and every event's date.
+   **Beware the Gurmukhi numeral look-alikes ੨/੭, ੫/੬/੯, ੮/੯** — verify against the day-grid
+   numbers, which are arithmetically forced. Cross-check tithi events against
+   `engine.computeRuleDate(...)`: the model has matched the Jantri essentially everywhere, so any
+   disagreement is most likely a misread digit.
+3. Add `data/pinned/ns<year>.json` (copy the shape of `ns558.json`), including a `source` note
+   with page references.
+4. `npm test && npm run build`. The tests automatically validate the model against the new pinned
+   year; the new year's dates flip from ≈ estimated to confirmed.
 
-## Contributing
+## Data provenance
 
-To contribute calendar corrections, edit the `sgpc-corrections.json` file or report issues comparing with official SGPC calendar data.
+- `sources/Jantri-Nanakshahi-557.pdf` — the NS 557 booklet the 557 data was extracted from.
+- NS 558: official 2026-27 wall-poster calendar; NS 549: official 2017-18 wall calendar.
+- Extraction method, glyph-verification process, and the full validation tables are documented in
+  the Phase 1 report kept alongside the source scans.
 
-## Acknowledgments
+## License
 
-This script is built on top of the [nanakshahi-js](https://github.com/Sarabveer/nanakshahi-js) library, which provides the necessary functions to calculate Gurpurab dates and Nanakshahi calendar conversions. Additional data sourced from official SGPC publications and community contributions.
+MIT

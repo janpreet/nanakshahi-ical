@@ -1,0 +1,21 @@
+{
+  "_about": "Personal additions/removals/renames, applied last (over pinned and computed data). Copy this file to data/overrides.json (gitignored, never fetched from anywhere) and edit. This is deliberately separate from calibration.json: calibration tunes the astronomy, overrides change what appears in YOUR calendar.",
+  "add": [
+    {
+      "id": "example-local-gurpurab",
+      "en": "Example: local gurdwara barsi (fixed Nanakshahi date every year)",
+      "category": "historical",
+      "rule": { "type": "fixedSolar", "month": "Magh", "day": 5 }
+    },
+    {
+      "id": "example-one-off",
+      "en": "Example: one-off event pinned to a single Gregorian date",
+      "category": "historical",
+      "dates": { "559": "2027-06-01" }
+    }
+  ],
+  "hide": ["mahila-divas"],
+  "rename": {
+    "azadi-divas": { "en": "Independence Day (India)" }
+  }
+}
