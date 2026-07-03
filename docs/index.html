@@ -40,7 +40,10 @@ h2 { font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif; f
 .month .meta { color:var(--muted); font-size:12.5px; font-family:var(--mono); margin-bottom:8px; }
 .ev { display:flex; gap:8px; padding:5px 0; border-top:1px solid var(--line); font-size:13.5px; }
 .ev .d { font-family:var(--mono); font-size:12px; color:var(--muted); white-space:nowrap; padding-top:1px; min-width:88px; }
-.ev.g { font-weight:600; }
+.ev .stack { flex:1; display:flex; flex-direction:column; gap:0; }
+.ev-item { display:flex; gap:8px; justify-content:space-between; }
+.ev-item + .ev-item { margin-top:6px; padding-top:6px; border-top:1px dashed var(--line); }
+.ev-item.g { font-weight:600; }
 .chip { font:600 10px/1 var(--mono); padding:3px 5px; border-radius:3px; align-self:flex-start; margin-top:2px; }
 .chip.ok { color:var(--ok); background:var(--ok-bg); }
 .chip.est { color:var(--est); background:var(--est-bg); }
@@ -87,7 +90,9 @@ fetch('data.json').then(r => r.json()).then(data => {
     const view = document.getElementById('view');
     const est = yr.status === 'estimated';
     let html = `<span class="banner ${est ? 'est' : 'ok'}">${est ? '≈ ESTIMATED — computed, awaiting the published Jantri' : 'CONFIRMED — extracted from the published Jantri'}</span>`;
-    html += `<p class="src">${esc(yr.source)}</p>`;
+    html += `<p class="src">${est
+      ? 'Dates for this year are computed from the calibrated astronomical model. They will be confirmed against the printed Jantri once it is published — until then they carry the ≈ mark.'
+      : 'Every date below was read from the official printed Jantri for this year; hover a ✓ for its page reference.'}</p>`;
     html += `<p class="legend">Bold = Gurpurab. Each month card shows its sangrand and length; ਮ = massia, ਪ = purnmashi.</p>`;
     html += '<div class="months">';
     for (const m of yr.months) {
@@ -97,12 +102,20 @@ fetch('data.json').then(r => r.json()).then(data => {
       const pur = yr.lunar.purnmashi.filter(d => d >= m.start && d <= end).map(fmt);
       html += `<div class="month"><h3>${MONTH_PA[m.name]} ${m.name} <span class="meta">· ${current}</span></h3>
         <div class="meta">1 ${m.name} = ${fmt(m.start)} · ${m.days} days<br>ਮ ${mas.join(', ') || '—'} · ਪ ${pur.join(', ') || '—'}</div>`;
+      const byDate = new Map();
       for (const e of evs) {
-        html += `<div class="ev ${e.category === 'gurpurab' ? 'g' : ''}">
-          <span class="d">${fmt(e.date)}<br>${esc(e.ns ?? '')}</span>
-          <span>${esc(e.en)}${e.pa ? '<br><span style="color:var(--muted)">' + esc(e.pa) + '</span>' : ''}</span>
-          <span class="chip ${e.status === 'estimated' ? 'est' : 'ok'}" title="${esc(e.detail ?? '')}">${e.status === 'estimated' ? '≈' : '✓'}</span>
-        </div>`;
+        if (!byDate.has(e.date)) byDate.set(e.date, []);
+        byDate.get(e.date).push(e);
+      }
+      for (const [date, group] of byDate) {
+        html += `<div class="ev"><span class="d">${fmt(date)}<br>${esc(group[0].ns ?? '')}</span><span class="stack">`;
+        for (const e of group) {
+          html += `<span class="ev-item ${e.category === 'gurpurab' ? 'g' : ''}">
+            <span>${esc(e.en)}${e.pa ? '<br><span style="color:var(--muted)">' + esc(e.pa) + '</span>' : ''}</span>
+            <span class="chip ${e.status === 'estimated' ? 'est' : 'ok'}" title="${esc(e.detail ?? '')}">${e.status === 'estimated' ? '≈' : '✓'}</span>
+          </span>`;
+        }
+        html += '</span></div>';
       }
       html += '</div>';
     }

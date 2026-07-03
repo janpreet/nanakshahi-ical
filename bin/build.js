@@ -22,12 +22,11 @@ let years;
 if (yearsArg) {
   years = yearsArg.split('=')[1].split(',').map(Number);
 } else {
-  // all pinned years + computed coverage through next NS year
-  const pinnedYears = [...engine.pinned.keys()].sort((a, b) => a - b);
-  const nowNs = new Date().getUTCFullYear() - engine.calibration.nsEpochGregorianOffset;
-  const maxYear = Math.max(...pinnedYears, nowNs + 1);
-  years = [...new Set([...pinnedYears, ...Array.from({ length: 3 }, (_, i) => maxYear - 1 + i)])]
-    .filter(y => y >= Math.min(...pinnedYears)).sort((a, b) => a - b);
+  // the current NS year + the next 5 (a Jan/Feb date still belongs to the previous NS year)
+  let nowNs = new Date().getUTCFullYear() - engine.calibration.nsEpochGregorianOffset;
+  const today = new Date().toISOString().slice(0, 10);
+  if (today < engine.yearTable(nowNs).sangrands.Chet) nowNs -= 1;
+  years = Array.from({ length: 6 }, (_, i) => nowNs + i);
 }
 
 console.log(`Building Nanakshahi calendar for NS years: ${years.join(', ')}`);
