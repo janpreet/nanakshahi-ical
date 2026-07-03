@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-03T03:39:06.254Z",
+ "generated": "2026-07-03T04:12:56.418Z",
  "years": {
   "549": {
    "nsYear": 549,
@@ -4510,6 +4510,18 @@
      "detail": "21 Assu (fixed solar date)"
     },
     {
+     "id": "darbar-khalsa-dussehra",
+     "en": "Darbar Khalsa (Dussehra)",
+     "pa": "ਦਰਬਾਰ ਖ਼ਾਲਸਾ (ਦੁਸਹਿਰਾ)",
+     "category": "historical",
+     "span": 1,
+     "date": "2027-10-09",
+     "ns": "23 Assu",
+     "status": "estimated",
+     "confidence": "plus-minus-1-day",
+     "detail": "Assu sudi 10 (Bikrami tithi, aparahna rule)"
+    },
+    {
      "id": "shaheedi-sukha-jinda",
      "en": "Shaheedi Dihada Bhai Sukhdev Singh Ji (Sukha) & Bhai Harjinder Singh Ji (Jinda)",
      "pa": "ਸ਼ਹੀਦੀ ਦਿਹਾੜਾ ਭਾਈ ਸੁਖਦੇਵ ਸਿੰਘ ਜੀ (ਸੁੱਖਾ) ਅਤੇ ਭਾਈ ਹਰਜਿੰਦਰ ਸਿੰਘ ਜੀ (ਜਿੰਦਾ)",
@@ -4520,18 +4532,6 @@
      "status": "estimated",
      "confidence": "normal",
      "detail": "fixed Gregorian anniversary (10-09)"
-    },
-    {
-     "id": "darbar-khalsa-dussehra",
-     "en": "Darbar Khalsa (Dussehra)",
-     "pa": "ਦਰਬਾਰ ਖ਼ਾਲਸਾ (ਦੁਸਹਿਰਾ)",
-     "category": "historical",
-     "span": 1,
-     "date": "2027-10-10",
-     "ns": "24 Assu",
-     "status": "estimated",
-     "confidence": "plus-minus-1-day",
-     "detail": "Assu sudi 10 (Bikrami tithi)"
     },
     {
      "id": "janam-bhai-taru-singh",
@@ -4627,7 +4627,7 @@
      "ns": "13 Katak",
      "status": "estimated",
      "confidence": "plus-minus-1-day",
-     "detail": "Katak massia (Bikrami tithi)"
+     "detail": "Katak massia (Bikrami tithi, pradosh rule)"
     },
     {
      "id": "saka-panja-sahib",
@@ -5828,11 +5828,11 @@
      "pa": "ਦਰਬਾਰ ਖ਼ਾਲਸਾ (ਦੁਸਹਿਰਾ)",
      "category": "historical",
      "span": 1,
-     "date": "2028-09-28",
-     "ns": "13 Assu",
+     "date": "2028-09-27",
+     "ns": "12 Assu",
      "status": "estimated",
      "confidence": "plus-minus-1-day",
-     "detail": "Assu sudi 10 (Bikrami tithi)"
+     "detail": "Assu sudi 10 (Bikrami tithi, aparahna rule)"
     },
     {
      "id": "singh-sabha-lehir",
@@ -5924,11 +5924,11 @@
      "pa": "ਬੰਦੀ ਛੋੜ ਦਿਵਸ (ਦੀਵਾਲੀ)",
      "category": "historical",
      "span": 1,
-     "date": "2028-10-18",
-     "ns": "2 Katak",
+     "date": "2028-10-17",
+     "ns": "1 Katak",
      "status": "estimated",
      "confidence": "plus-minus-1-day",
-     "detail": "Katak massia (Bikrami tithi)"
+     "detail": "Katak massia (Bikrami tithi, pradosh rule)"
     },
     {
      "id": "gurgaddi-guru-granth-sahib",

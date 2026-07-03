@@ -6,7 +6,8 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { Engine } from '../src/engine.js';
+import { existsSync } from 'node:fs';
+import { Engine } from 'nanakshahi-jantri';
 import { generateIcs } from '../src/ics.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -14,7 +15,8 @@ const args = process.argv.slice(2);
 const yearsArg = args.find(a => a.startsWith('--years'));
 const dailyDates = !args.includes('--no-daily');
 
-const engine = new Engine();
+const overridesPath = join(ROOT, 'data', 'overrides.json');
+const engine = new Engine(existsSync(overridesPath) ? { overrides: overridesPath } : {});
 
 let years;
 if (yearsArg) {
