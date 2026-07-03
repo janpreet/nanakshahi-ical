@@ -39,5 +39,6 @@
     "build": "node bin/build.js",
     "test": "node --test test/*.test.js",
     "start": "node bin/build.js"
-  }
+  },
+  "private": true
 }
