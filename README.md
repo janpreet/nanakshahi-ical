@@ -24,16 +24,19 @@ Every date this project emits is one of two kinds, and they are visibly distingu
   astronomical model below. Estimated titles carry a `≈` prefix in the ICS feed and web calendar.
   When the real Jantri appears, pin it (see below) and the confirmed dates replace the estimates.
 
-Two events are special even when estimated: **Bandi Chhor Divas (Diwali)** and **Darbar Khalsa
-(Dussehra)** follow festival conventions (pradosh/aparahna) that the Jantri itself has applied
-inconsistently between years — their estimated dates can shift by one day and say so in their
-description. A few events (e.g. Sirjana Divas Sri Akal Takht) follow no consistent rule across
-published years and are emitted **only** for pinned years, never guessed.
+Two events use festival rules rather than the plain sunrise tithi: **Bandi Chhor Divas (Diwali)**
+= amavasya prevailing at pradosh (later evening when both qualify) and **Darbar Khalsa (Dussehra)**
+= dashami overlapping aparahna (first day when both qualify) — both calibrated to the Jantri's own
+choices across all pinned years, and Diwali additionally cross-checked against independently
+published panchang dates for 2018-2023 (6/6). In rare split years panchang authorities can still
+disagree by a day, so estimated entries for these two keep a ±1-day note. A few events (e.g.
+Sirjana Divas Sri Akal Takht) follow no consistent rule across published years and are emitted
+**only** for pinned years, never guessed.
 
 ## The computed model (for unpinned years)
 
-Calibrated against every data point of the three pinned years — 36/36 sangrands and 130/132
-tithi-event dates exactly (the other 2 are the one-day festival cases above):
+Calibrated against every data point of the three pinned years — 36/36 sangrands and 132/132
+tithi-event dates exactly:
 
 - **Solar**: drik sidereal sankranti (Lahiri-type ayanamsa, 23.8532° at J2000), assigned to the
   **sunrise-to-sunrise day at Amritsar** containing the sankranti — a sankranti after midnight but

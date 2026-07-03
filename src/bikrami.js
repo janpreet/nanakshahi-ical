@@ -8,7 +8,7 @@
 //     takes the first day
 import {
   toIST, istCivilDate, addDays, makeObserver,
-  findSankranti, sunriseUTC, tithiAt, newMoonAfter,
+  findSankranti, sunriseUTC, sunsetUTC, tithiAt, newMoonAfter, moonPhaseAfter,
 } from './astro.js';
 
 export const MONTHS = ['Chet', 'Vaisakh', 'Jeth', 'Harh', 'Sawan', 'Bhadon', 'Assu', 'Katak', 'Maghar', 'Poh', 'Magh', 'Phagan'];
@@ -101,11 +101,51 @@ export class Bikrami {
     return null;
   }
 
-  // date of "month paksha n" (purnimanta label) given a precomputed amanta month list
-  lunarEventDay(monthName, paksha, n, months) {
+  // festival day-window at the configured location
+  // pradosh: [sunset, sunset + 96 min] — Diwali-type; aparahna: [sunrise + 3/5·day, sunrise + 4/5·day] — Dussehra-type
+  festivalWindow(kind, isoDay) {
+    if (kind === 'pradosh') {
+      const set = sunsetUTC(isoDay, this.observer);
+      return [set, new Date(set.getTime() + 96 * 60000)];
+    }
+    const rise = this.sunrise(isoDay);
+    const set = sunsetUTC(isoDay, this.observer);
+    const len = set - rise;
+    return [new Date(rise.getTime() + len * 3 / 5), new Date(rise.getTime() + len * 4 / 5)];
+  }
+
+  // day on which tithi [spanStart, spanEnd) overlaps the festival window;
+  // tiebreak 'earlier' | 'later' when both candidate days qualify (calibrated: the Jantri
+  // took the later evening for Diwali 557 and the first day for Dussehra 558)
+  festivalDay(spanStart, spanEnd, window, tiebreak) {
+    const candidates = [];
+    for (let d = istCivilDate(spanStart); d <= istCivilDate(spanEnd); d = addDays(d, 1)) candidates.push(d);
+    const hits = candidates.filter(d => {
+      const [w0, w1] = this.festivalWindow(window, d);
+      return spanStart < w1 && spanEnd > w0;
+    });
+    if (!hits.length) return istCivilDate(spanEnd); // degenerate; tithi misses the window on both days
+    return tiebreak === 'later' ? hits[hits.length - 1] : hits[0];
+  }
+
+  // date of "month paksha n" (purnimanta label) given a precomputed amanta month list.
+  // opts.window ('pradosh'|'aparahna') switches from the udaya rule to a festival rule.
+  lunarEventDay(monthName, paksha, n, months, opts = {}) {
     const m = months.find(mm => !mm.adhika && mm.name === monthName);
     if (!m) return null;
     const nmStartIso = istCivilDate(m.start);
+    if (opts.window) {
+      let spanStart, spanEnd;
+      if (paksha === 'massia') {
+        // amavasya ending the vadi paksha at m.start
+        spanEnd = m.start;
+        spanStart = moonPhaseAfter(348, new Date(m.start.getTime() - 3 * 86400000));
+      } else { // sudi n
+        spanStart = moonPhaseAfter((n - 1) * 12, m.start);
+        spanEnd = moonPhaseAfter(n * 12, spanStart);
+      }
+      return { day: this.festivalDay(spanStart, spanEnd, opts.window, opts.tiebreak), kshaya: false };
+    }
     if (paksha === 'sudi') return this.dayOfSunriseTithi(n, nmStartIso, 20);
     if (paksha === 'purnima') return this.dayOfSunriseTithi(15, nmStartIso, 20);
     if (paksha === 'massia') {

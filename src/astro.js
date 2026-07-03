@@ -55,6 +55,17 @@ export function sunriseUTC(isoIstDay, observer) {
   return r ? r.date : null;
 }
 
+export function sunsetUTC(isoIstDay, observer) {
+  const rise = sunriseUTC(isoIstDay, observer);
+  const r = rise && A.SearchRiseSet(A.Body.Sun, observer, -1, rise, 1.0);
+  return r ? r.date : null;
+}
+
+// moment the moon-sun elongation reaches `angleDeg` (tithi boundary), searching from t0
+export function moonPhaseAfter(angleDeg, t0) {
+  return A.SearchMoonPhase(angleDeg % 360, t0, 40).date;
+}
+
 // Tithi index 1..30 at a moment (1-15 sudi, 16-30 vadi; 15 = purnmashi, 30 = massia)
 export function tithiAt(date) {
   const sun = A.SunPosition(date).elon;

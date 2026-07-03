@@ -120,13 +120,14 @@ export class Engine {
       for (let i = 0; i < amanta.length; i++) {
         if (amanta[i].adhika || amanta[i].name !== rule.month) continue;
         const sub = amanta.slice(i);
-        const r = this.bikrami.lunarEventDay(rule.month, paksha, rule.n ?? null, sub);
+        const r = this.bikrami.lunarEventDay(rule.month, paksha, rule.n ?? null, sub, { window: rule.window, tiebreak: rule.tiebreak });
         if (r && r.day >= table.sangrands.Chet && r.day < table.nextChet) hits.push(r);
       }
       if (!hits.length) return null;
       const r = hits[0];
       const tithiName = paksha === 'purnima' ? 'purnmashi' : paksha === 'massia' ? 'massia' : `${paksha} ${rule.n}`;
-      return { date: r.day, detail: `${rule.month} ${tithiName} (Bikrami tithi)${r.kshaya ? ', kshaya' : ''}` };
+      const windowNote = rule.window ? `, ${rule.window} rule` : '';
+      return { date: r.day, detail: `${rule.month} ${tithiName} (Bikrami tithi${windowNote})${r.kshaya ? ', kshaya' : ''}` };
     }
     return null; // pinnedOnly
   }
