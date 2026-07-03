@@ -2,9 +2,14 @@
 
 [![CI](https://github.com/janpreet/nanakshahi-ical/actions/workflows/ci.yml/badge.svg)](https://github.com/janpreet/nanakshahi-ical/actions/workflows/ci.yml)
 
-A Nanakshahi calendar engine, subscribable ICS feed, and web calendar that follow the
-**official Nanakshahi Jantri** (the printed calendar published yearly from Amritsar):
-Gurpurabs, itihasik dihade, bhagat sahiban de dihade, sangrands, massia and purnmashi.
+Subscribable ICS feed and web calendar for the **official Nanakshahi Jantri** (the printed
+calendar published yearly from Amritsar): Gurpurabs, itihasik dihade, bhagat sahiban de dihade,
+sangrands, massia and purnmashi.
+
+The calendar engine itself lives in its own reusable package —
+**[nanakshahi-jantri](https://github.com/janpreet/nanakshahi-jantri)** (`npm install
+nanakshahi-jantri`) — so other apps and use cases can consume the same pinned data and
+astronomical model. This repo is the feed/site builder on top of it.
 
 The Jantri in current practice is the Bikrami calendar under Nanakshahi labels: month starts are
 true sidereal **sankrantis** (so month lengths change every year — Jeth had 32 days in NS 557, Sawan
@@ -62,10 +67,10 @@ npm run build     # writes docs/nanakshahi.ics and docs/data.json
   `docs/`). The feed covers all pinned years plus the next years as estimates.
 - **Web calendar**: `docs/index.html` — month-by-month view with confirmed/estimated badges,
   Punjabi and English names, sangrand/massia/purnmashi per month.
-- **Library**:
+- **Library**: use [nanakshahi-jantri](https://github.com/janpreet/nanakshahi-jantri) directly:
 
 ```js
-import { Engine } from './src/engine.js';
+import { Engine } from 'nanakshahi-jantri';
 const engine = new Engine();
 engine.buildYear(559);            // months, lunar days, events — tagged confirmed/estimated
 engine.yearTable(560).sangrands;  // computed sangrand dates
@@ -89,10 +94,10 @@ This is a deliberate 15-minute manual task — no scraping, no pretend automatio
    numbers, which are arithmetically forced. Cross-check tithi events against
    `engine.computeRuleDate(...)`: the model has matched the Jantri essentially everywhere, so any
    disagreement is most likely a misread digit.
-3. Add `data/pinned/ns<year>.json` (copy the shape of `ns558.json`), including a `source` note
-   with page references.
-4. `npm test && npm run build`. The tests automatically validate the model against the new pinned
-   year; the new year's dates flip from ≈ estimated to confirmed.
+3. Add `data/pinned/ns<year>.json` in the [nanakshahi-jantri](https://github.com/janpreet/nanakshahi-jantri)
+   repo (copy the shape of `ns558.json`), including a `source` note with page references; its tests
+   validate the model against the new pinned year. Release it, bump the dependency here.
+4. `npm test && npm run build` here — the new year's dates flip from ≈ estimated to confirmed.
 
 ## Data provenance
 

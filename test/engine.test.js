@@ -1,14 +1,13 @@
 // Layering, tagging, overrides, ICS.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, cpSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { Engine } from '../src/engine.js';
+import { Engine } from 'nanakshahi-jantri';
 import { generateIcs } from '../src/ics.js';
 
-const DATA = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
 const engine = new Engine();
 
 test('pinned year serves the printed date, marked confirmed with source', () => {
@@ -64,15 +63,14 @@ test('gregorian <-> nanakshahi conversion round-trips across a pinned year', () 
   assert.deepEqual(engine.gregorianToNs('2026-02-21', table), { month: 'Phagan', day: 10, label: '10 Phagan' });
 });
 
-test('user overrides: add, hide, rename', () => {
+test('user overrides: add, hide, rename (via overrides file, as bin/build.js wires it)', () => {
   const dir = mkdtempSync(join(tmpdir(), 'ns-data-'));
-  cpSync(DATA, dir, { recursive: true });
   writeFileSync(join(dir, 'overrides.json'), JSON.stringify({
     add: [{ id: 'my-barsi', en: 'My local barsi', category: 'historical', rule: { type: 'fixedSolar', month: 'Magh', day: 5 } }],
     hide: ['azadi-divas'],
     rename: { 'punjabi-suba-divas': { en: 'Punjabi Suba Day (renamed)' } },
   }));
-  const e2 = new Engine(dir);
+  const e2 = new Engine({ overrides: join(dir, 'overrides.json') });
   const events = e2.eventsForYear(557);
   const mine = events.find(e => e.id === 'my-barsi');
   assert.ok(mine, 'override event added');

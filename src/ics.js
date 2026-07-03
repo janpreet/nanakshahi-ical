@@ -2,7 +2,7 @@
 // visibly distinguished: estimated titles carry a "≈" prefix and every event's
 // description states its provenance (Jantri page vs computed rule).
 import { createEvents } from 'ics';
-import { addDays } from './bikrami.js';
+import { addDays } from 'nanakshahi-jantri';
 
 function ymd(iso) { return iso.split('-').map(Number); }
 
