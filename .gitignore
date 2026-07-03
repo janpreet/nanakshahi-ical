@@ -2,3 +2,5 @@ node_modules/
 .npm
 coverage/
 data/overrides.json
+docs/data.json
+docs/nanakshahi.ics

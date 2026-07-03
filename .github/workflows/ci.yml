@@ -5,6 +5,10 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    # monthly rebuild+redeploy: rolls the estimated-years window forward and picks up
+    # engine releases, keeping the published feed fresh without any bot commits
+    - cron: '23 2 1 * *'
 
 permissions:
   contents: read

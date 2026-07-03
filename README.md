@@ -63,8 +63,15 @@ npm test          # validates the model against every pinned data point
 npm run build     # writes docs/nanakshahi.ics and docs/data.json
 ```
 
-- **Subscribe**: point your calendar app at the published `nanakshahi.ics` (GitHub Pages serves
-  `docs/`). The feed covers all pinned years plus the next years as estimates.
+- **Subscribe**: point your calendar app (iPhone: Settings → Calendar → Accounts → Add
+  Subscribed Calendar; Google: Other calendars → From URL) at
+
+  ```
+  https://janpreet.github.io/nanakshahi-ical/nanakshahi.ics
+  ```
+
+  The feed covers all pinned years plus the coming years as ≈ estimates, and is rebuilt from
+  source by CI on every push and on a monthly schedule — never hand-edited, never stale.
 - **Web calendar**: `docs/index.html` — month-by-month view with confirmed/estimated badges,
   Punjabi and English names, sangrand/massia/purnmashi per month.
 - **Library**: use [nanakshahi-jantri](https://github.com/janpreet/nanakshahi-jantri) directly:
@@ -82,6 +89,15 @@ Copy `data/overrides.sample.json` to `data/overrides.json` (gitignored, purely l
 ever fetched) to add your own observances, hide events, or rename them. Overrides are applied last,
 over both pinned and computed data. This is deliberately a different file from `calibration.json`:
 calibration tunes the astronomy, overrides change what appears in *your* calendar.
+
+## Refresh cadence
+
+- **Continuous**: CI rebuilds and redeploys the feed and site on every push and on the 1st of
+  each month (rolling the estimated-years window forward and picking up engine updates).
+  Calendar apps poll the URL on their own schedule.
+- **Yearly (manual, ~February/March)**: when the new Jantri is published, pin it in the engine
+  repo — that's the only human step, described below. Until then the new year is already in the
+  feed as ≈ estimated.
 
 ## Adding next year's Jantri (the yearly refresh)
 
