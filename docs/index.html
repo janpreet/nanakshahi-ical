@@ -50,6 +50,16 @@ h2 { font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif; f
 footer { margin-top:40px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); padding-top:14px; }
 footer a { color:var(--kesari); }
 .legend { color:var(--muted); font-size:13px; margin:0 0 14px; }
+.nitnem { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px 18px; margin:0 0 22px; }
+.nitnem h2 { font-size:18px; }
+.nitnem .place { color:var(--kesari); }
+.nt-rows { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px 14px; margin:10px 0 12px; }
+.nt { background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:10px 12px; }
+.nt .nt-name { display:block; font-weight:600; font-size:13.5px; }
+.nt .nt-pa { color:var(--muted); font-weight:400; }
+.nt .nt-time { display:block; font:600 22px/1.3 var(--mono); color:var(--kesari); margin:3px 0 1px; font-variant-numeric:tabular-nums; }
+.nt .nt-why { display:block; color:var(--muted); font-size:12px; }
+.nt-note { color:var(--muted); font-size:13px; margin:0; max-width:80ch; }
 </style>
 </head>
 <body>
@@ -60,6 +70,25 @@ Nanakshahi Jantri (Amritsar). Years the Jantri has published are <b>confirmed</b
 from the printed calendar); future years are <b>≈ estimated</b> from a calibrated astronomical model until
 the real Jantri appears.</p>
 <div class="subscribe">Subscribe in your calendar app:&nbsp; <code id="icsUrl">nanakshahi.ics</code></div>
+<div class="subscribe">Optional — daily Nitnem paath times, shown in your own timezone
+(ਅੰਮ੍ਰਿਤ ਵੇਲਾ Amritvela 03:30 · ਰਹਿਰਾਸ ਸਾਹਿਬ Rehraas 18:30 · ਸੋਹਿਲਾ ਸਾਹਿਬ Sohila 21:00):&nbsp;
+<code id="nitnemUrl">nitnem.ics</code></div>
+<div class="nitnem">
+<h2>ਨਿਤਨੇਮ ਵੇਲੇ · Nitnem times <span id="ntPlace" class="place"></span></h2>
+<div class="nt-rows">
+  <div class="nt"><span class="nt-name">Amritvela <span class="nt-pa">ਅੰਮ੍ਰਿਤ ਵੇਲਾ</span></span>
+    <span class="nt-time" id="ntAmrit">03:30</span><span class="nt-why" id="ntAmritWhy">3 hours before dawn</span></div>
+  <div class="nt"><span class="nt-name">Rehraas Sahib <span class="nt-pa">ਰਹਿਰਾਸ ਸਾਹਿਬ</span></span>
+    <span class="nt-time" id="ntRehraas">18:30</span><span class="nt-why" id="ntRehraasWhy">at sunset</span></div>
+  <div class="nt"><span class="nt-name">Sohila Sahib <span class="nt-pa">ਕੀਰਤਨ ਸੋਹਿਲਾ</span></span>
+    <span class="nt-time">21:00</span><span class="nt-why">before sleep</span></div>
+</div>
+<p class="nt-note">A <b>pahar</b> (ਪਹਿਰ) is a three-hour watch — eight in a full day, four in the night,
+which runs sunset to sunrise. <b>Amritvela</b> is the last pahar of the night: the Sikh Rehat Maryada
+(Art. 4) places it about three hours before dawn. <b>Rehraas Sahib</b> is read at sunset and
+<b>Kirtan Sohila</b> before sleeping. <span id="ntDetail">Times shown are the fixed feed times.</span>
+The subscribable <code>nitnem.ics</code> always uses the fixed global times 03:30 · 18:30 · 21:00.</p>
+</div>
 <div class="tabs" id="tabs" role="tablist"></div>
 <div id="view"></div>
 <footer>
@@ -123,8 +152,49 @@ fetch('data.json').then(r => r.json()).then(data => {
     view.innerHTML = html;
   }
   document.getElementById('icsUrl').textContent = new URL('nanakshahi.ics', location.href).href;
+  document.getElementById('nitnemUrl').textContent = new URL('nitnem.ics', location.href).href;
   render();
 });
+
+// Localized nitnem times: resolve the visitor's IANA timezone to its tzdb
+// reference-city coordinates (no geolocation prompt) and compute today's
+// sunrise/sunset there (NOAA algorithm). Amritvela = sunrise − 3h (Rehat
+// Maryada), Rehraas = sunset. Falls back silently to the fixed feed times.
+fetch('tzcoords.json').then(r => r.json()).then(coords => {
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const [lat, lon] = coords[tz] ?? [];
+  if (lat === undefined) return;
+  const rad = d => d * Math.PI / 180, deg = r => r * 180 / Math.PI;
+  function sunUTC(rising) {
+    const now = new Date();
+    const [y, m, d] = [now.getFullYear(), now.getMonth(), now.getDate()];
+    const N = Math.floor((Date.UTC(y, m, d) - Date.UTC(y, 0, 0)) / 86400000);
+    const lngHour = lon / 15;
+    const t = N + ((rising ? 6 : 18) - lngHour) / 24;
+    const M = 0.9856 * t - 3.289;
+    let L = M + 1.916 * Math.sin(rad(M)) + 0.020 * Math.sin(rad(2 * M)) + 282.634;
+    L = ((L % 360) + 360) % 360;
+    let RA = ((deg(Math.atan(0.91764 * Math.tan(rad(L)))) % 360) + 360) % 360;
+    RA = (RA + (Math.floor(L / 90) - Math.floor(RA / 90)) * 90) / 15;
+    const sinDec = 0.39782 * Math.sin(rad(L));
+    const cosH = (Math.cos(rad(90.833)) - sinDec * Math.sin(rad(lat))) /
+      (Math.cos(Math.asin(sinDec)) * Math.cos(rad(lat)));
+    if (cosH > 1 || cosH < -1) return null; // polar day/night
+    const H = (rising ? 360 - deg(Math.acos(cosH)) : deg(Math.acos(cosH))) / 15;
+    const UT = (((H + RA - 0.06571 * t - 6.622 - lngHour) % 24) + 24) % 24;
+    return new Date(Date.UTC(y, m, d) + UT * 3600000);
+  }
+  const sunrise = sunUTC(true), sunset = sunUTC(false);
+  if (!sunrise || !sunset) return;
+  const hm = t => t.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+  document.getElementById('ntAmrit').textContent = '≈ ' + hm(new Date(sunrise - 3 * 3600000));
+  document.getElementById('ntAmritWhy').textContent = `3 h before sunrise (${hm(sunrise)})`;
+  document.getElementById('ntRehraas').textContent = '≈ ' + hm(sunset);
+  document.getElementById('ntRehraasWhy').textContent = 'at sunset';
+  document.getElementById('ntPlace').textContent = '— ' + tz.split('/').pop().replace(/_/g, ' ');
+  document.getElementById('ntDetail').textContent =
+    `Times above are computed for today in your timezone (${tz}, from its reference city — hence ≈).`;
+}).catch(() => {});
 </script>
 </body>
 </html>

@@ -76,6 +76,41 @@ export function buildIcsEvents(engine, nsYears, { dailyDates = true } = {}) {
   return out;
 }
 
+// Daily Nitnem paath times as floating (timezone-less) events: a DTSTART with
+// no TZID/Z suffix renders at that wall-clock time in the device's own
+// timezone, so one feed serves every location. Times anchor to the
+// population-weighted annual mean of local sunrise/sunset across the major
+// Sikh population centres (Punjab, Delhi, Toronto, Vancouver, London,
+// California, New York, Melbourne, KL, N. Italy — mean sunrise 06:23, mean
+// sunset 18:34): Amritvela = mean sunrise − 3h (Sikh Rehat Maryada, Art. 4),
+// Rehraas = mean sunset, Sohila = bedtime convention.
+const NITNEM = [
+  { id: 'amritvela', title: 'Amritvela', start: [3, 30], duration: { hours: 1 },
+    description: 'ਅੰਮ੍ਰਿਤ ਵੇਲਾ — Nitnem\nFixed time: ≈3 hours before mean local sunrise (Sikh Rehat Maryada)' },
+  { id: 'rehraas', title: 'Rehraas Sahib', start: [18, 30], duration: { minutes: 30 },
+    description: 'ਰਹਿਰਾਸ ਸਾਹਿਬ — evening paath\nFixed time: ≈ mean local sunset' },
+  { id: 'sohila', title: 'Sohila Sahib', start: [21, 0], duration: { minutes: 15 },
+    description: 'ਕੀਰਤਨ ਸੋਹਿਲਾ — before sleep' },
+];
+
+export function generateNitnemIcs() {
+  const { error, value } = createEvents(NITNEM.map(p => ({
+    uid: `${p.id}@nanakshahi-ical`,
+    title: p.title,
+    description: p.description,
+    start: [2025, 1, 1, ...p.start],
+    startInputType: 'local', startOutputType: 'local',
+    duration: p.duration,
+    recurrenceRule: 'FREQ=DAILY',
+    transp: 'TRANSPARENT',
+  })), {
+    calName: 'Nitnem Paath Times',
+    productId: 'nanakshahi-ical',
+  });
+  if (error) throw error;
+  return value;
+}
+
 export function generateIcs(engine, nsYears, opts) {
   const { error, value } = createEvents(buildIcsEvents(engine, nsYears, opts), {
     calName: 'Nanakshahi Calendar (Jantri)',

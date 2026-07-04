@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Engine } from 'nanakshahi-jantri';
-import { generateIcs } from '../src/ics.js';
+import { generateIcs, generateNitnemIcs } from '../src/ics.js';
 
 const engine = new Engine();
 
@@ -86,4 +86,20 @@ test('ICS output distinguishes confirmed vs estimated and is valid enough to par
   assert.match(ics, /SUMMARY:≈ Parkash Gurpurab Sri Guru Nanak Dev Sahib Ji/, 'estimated title carries ≈');
   const count = (ics.match(/BEGIN:VEVENT/g) ?? []).length;
   assert.ok(count > 200, `expected >200 VEVENTs, got ${count}`);
+});
+
+test('Nitnem ICS uses floating local times recurring daily', () => {
+  const ics = generateNitnemIcs();
+  assert.equal((ics.match(/BEGIN:VEVENT/g) ?? []).length, 3);
+  assert.match(ics, /SUMMARY:Amritvela/);
+  assert.match(ics, /SUMMARY:Rehraas Sahib/);
+  assert.match(ics, /SUMMARY:Sohila Sahib/);
+  // Floating (timezone-less) starts: wall-clock time with no Z suffix or TZID,
+  // so each device renders it in its own timezone.
+  assert.match(ics, /DTSTART:20250101T033000\r?\n/);
+  assert.match(ics, /DTSTART:20250101T183000\r?\n/);
+  assert.match(ics, /DTSTART:20250101T210000\r?\n/);
+  assert.doesNotMatch(ics, /DTSTART[^\r\n]*Z/);
+  assert.doesNotMatch(ics, /TZID/);
+  assert.equal((ics.match(/RRULE:FREQ=DAILY/g) ?? []).length, 3);
 });

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Build the distributable artifacts into docs/ (the published site):
 //   docs/nanakshahi.ics  — subscribable feed (pinned years + two computed years ahead)
+//   docs/nitnem.ics      — optional daily paath-time feed (floating local times)
 //   docs/data.json       — feed for the web calendar
 // Usage: node bin/build.js [--years 557,558,559] [--no-daily]
 import { writeFileSync, mkdirSync } from 'node:fs';
@@ -8,7 +9,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { existsSync } from 'node:fs';
 import { Engine } from 'nanakshahi-jantri';
-import { generateIcs } from '../src/ics.js';
+import { generateIcs, generateNitnemIcs } from '../src/ics.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -43,4 +44,5 @@ writeFileSync(join(docs, 'data.json'), JSON.stringify(payload, null, 1));
 
 const ics = generateIcs(engine, years, { dailyDates });
 writeFileSync(join(docs, 'nanakshahi.ics'), ics);
-console.log(`Wrote docs/data.json and docs/nanakshahi.ics (${(ics.length / 1024).toFixed(0)} KB)`);
+writeFileSync(join(docs, 'nitnem.ics'), generateNitnemIcs());
+console.log(`Wrote docs/data.json, docs/nanakshahi.ics (${(ics.length / 1024).toFixed(0)} KB) and docs/nitnem.ics`);
